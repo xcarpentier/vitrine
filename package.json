@@ -2,9 +2,47 @@
   "name": "vitrine",
   "version": "0.0.1",
   "description": "vitrine: professional website and app showcase",
-  "main": "index.js",
-  "repository": "https://github.com/xcarpentier/vitrine",
-  "author": "Xavier Carpentier <xcapetir@gmail.com> (https://xaviercarpentier.com/)",
+  "private": true,
   "license": "MIT",
-  "private": false
+  "repository": "https://github.com/xcarpentier/vitrine",
+  "author": {
+    "name": "Xavier Carpentier",
+    "email": "xcapetir@gmail.com",
+    "url": "https://xaviercarpentier.com/"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "clean": "yarn workspaces run clean",
+    "dev:mobile": "yarn workspace @vitrine/mobile compile && concurrently --kill-others \"yarn workspace @vitrine/mobile compile -w\" \"yarn workspace @vitrine/mobile start\"",
+    "dev:web": "yarn workspace @vitrine/web compile && concurrently --kill-others \"yarn workspace @vitrine/web compile -w\" \"yarn workspace @vitrine/web start\"",
+    "format": "yarn workspaces run format",
+    "lint": "yarn workspaces run lint"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "husky": "^1.2.0",
+    "lint-staged-offline": "^0.0.1",
+    "prettier": "^1.16.4",
+    "tslint": "^5.13.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.3.3333"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged-offline"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
