@@ -1,0 +1,10 @@
+{
+  "name": "vitrine",
+  "version": "0.0.1",
+  "description": "vitrine: professional website and app showcase",
+  "main": "index.js",
+  "repository": "https://github.com/xcarpentier/vitrine",
+  "author": "Xavier Carpentier <xcapetir@gmail.com> (https://xaviercarpentier.com/)",
+  "license": "MIT",
+  "private": false
+}
