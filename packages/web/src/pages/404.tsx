@@ -1,13 +1,15 @@
-import React from 'react'
+import * as React from 'react'
 
-import Layout from '../components/layout'
-import { SEO } from '../components/seo'
+import { MainTitle } from '../components/common/customs/CustomContent'
+import { Paragraph } from '../components/common/customs/CustomText'
+import { HtmlHeader } from '../components/HtmlHeader'
+import { Layout } from '../components/layout'
 
 const NotFoundPage = () => (
   <Layout>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that does not exist.</p>
+    <HtmlHeader title="404: Not found" />
+    <MainTitle>NOT FOUND</MainTitle>
+    <Paragraph>You just hit a route that does not exist.</Paragraph>
   </Layout>
 )
 

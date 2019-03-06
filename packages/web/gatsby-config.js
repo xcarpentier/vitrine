@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `📱Senior Freelance React-Native Developer Remote`,
+    title: `Senior Freelance React-Native Developer Remote`,
     description: `Need to quickly develop a high-end mobile app?`,
     author: `@xcapetir`,
   },

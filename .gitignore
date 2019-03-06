@@ -2,7 +2,8 @@
 .history
 .jest
 .vscode
+.cache/
+public/
 node_modules/
-dist/
 npm-debug.log
 yarn-error.log

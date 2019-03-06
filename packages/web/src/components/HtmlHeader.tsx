@@ -1,23 +1,20 @@
-import React from 'react'
-
 import { graphql, useStaticQuery } from 'gatsby'
-import Helmet from 'react-helmet'
+import * as React from 'react'
+import Helmet, { HelmetProps } from 'react-helmet'
 
-interface Meta {
-  name?: string
-  property?: string
-  content: string
-}
-
-interface SEOProps {
-  title: string
+interface SEOProps extends HelmetProps {
   description?: string
   lang?: string
-  meta?: Meta
   keywords?: string[]
 }
 
-export function SEO({ description, lang, meta, keywords, title }: SEOProps) {
+export function HtmlHeader({
+  description,
+  lang,
+  meta,
+  keywords,
+  title,
+}: SEOProps) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -41,6 +38,22 @@ export function SEO({ description, lang, meta, keywords, title }: SEOProps) {
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
+      link={[
+        {
+          href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,600',
+          rel: 'stylesheet',
+        },
+        {
+          href: '//31.media.tumblr.com/avatar_ab7b0e10f1c2_128.png',
+          rel: 'shortcut icon',
+          type: 'image/png',
+        },
+        {
+          href: '//31.media.tumblr.com/avatar_ab7b0e10f1c2_128.png',
+          rel: 'apple-touch-icon',
+          type: 'image/png',
+        },
+      ]}
       meta={[
         {
           name: `description`,
@@ -76,19 +89,20 @@ export function SEO({ description, lang, meta, keywords, title }: SEOProps) {
         },
       ]
         .concat(
-          keywords.length > 0
+          keywords && keywords.length > 0
             ? {
                 name: `keywords`,
                 content: keywords.join(`, `),
               }
             : [],
         )
+        // @ts-ignore
         .concat(meta)}
     />
   )
 }
 
-SEO.defaultProps = {
+HtmlHeader.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [],
