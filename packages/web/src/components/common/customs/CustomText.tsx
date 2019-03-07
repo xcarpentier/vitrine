@@ -4,7 +4,7 @@ import { AccessibilityRole } from './AccessibilityRole'
 import { CustomColor } from './CustomColor'
 import { Omit } from './Omit'
 
-type CustomSize = 'xs' | 's' | 'm' | 'l' | 'xl'
+type CustomSize = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl'
 type CustomWeight = 'thin' | 'normal'
 
 type CustomTextPropsBase = Omit<Text['props'], 'accessibilityRole'> & {
@@ -14,6 +14,7 @@ type CustomTextPropsBase = Omit<Text['props'], 'accessibilityRole'> & {
 
 export interface CustomTextProps extends CustomTextPropsBase {
   color?: CustomColor
+  backgroundColor?: CustomColor
   size?: CustomSize
   center?: boolean
   children: React.ReactNode
@@ -47,9 +48,12 @@ const calculateFontSize = (size?: CustomSize): number => {
       return 16
     }
     case 'l': {
-      return 25
+      return 20
     }
     case 'xl': {
+      return 25
+    }
+    case 'xxl': {
       return 36
     }
     default: {
@@ -64,6 +68,7 @@ export const CustomText = ({
   style,
   center,
   weight,
+  backgroundColor,
   ...props
 }: CustomTextProps) => (
   <TextBase
@@ -71,11 +76,12 @@ export const CustomText = ({
       BaseStyle.defaultStyle,
       {
         color,
+        backgroundColor,
         fontSize: calculateFontSize(size),
         lineHeight: calculateFontSize(size) * 1.5,
       },
       center ? { textAlign: 'center' } : { textAlign: 'left' },
-      weight && { fontWeight: weight === 'normal' ? '600' : '400' },
+      { fontWeight: weight === 'normal' ? '600' : '400' },
       style,
     ]}
     {...props}
@@ -86,7 +92,7 @@ export const Heading1 = (props: CustomTextProps) => (
   <CustomText
     accessibilityRole="heading"
     weight="normal"
-    size="xl"
+    size="xxl"
     {...props}
   />
 )
@@ -96,7 +102,27 @@ export const Heading2 = (props: CustomTextProps) => (
     accessibilityRole="heading"
     aria-level="2"
     weight="normal"
+    size="xl"
+    {...props}
+  />
+)
+
+export const Heading3 = (props: CustomTextProps) => (
+  <CustomText
+    accessibilityRole="heading"
+    aria-level="3"
+    weight="normal"
     size="l"
+    {...props}
+  />
+)
+
+export const Heading4 = (props: CustomTextProps) => (
+  <CustomText
+    accessibilityRole="heading"
+    aria-level="4"
+    weight="normal"
+    size="m"
     {...props}
   />
 )

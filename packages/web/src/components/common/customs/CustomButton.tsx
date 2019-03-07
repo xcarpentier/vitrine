@@ -3,6 +3,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableOpacityProps,
+  Platform,
 } from 'react-native'
 import { CustomColor } from './CustomColor'
 import { CustomText } from './CustomText'
@@ -17,7 +18,16 @@ const BaseStyle = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 4,
-    backgroundColor: CustomColor.primary,
+    backgroundColor: Platform.select({
+      default: CustomColor.primary,
+      web: undefined,
+    }),
+    backgroundImage: Platform.select({
+      default: undefined,
+      web: `linear-gradient(to right, ${CustomColor.primaryDD}, ${
+        CustomColor.primary
+      })`,
+    }),
     borderColor: CustomColor.primaryD,
     paddingHorizontal: 12,
     paddingVertical: 6,

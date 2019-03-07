@@ -1,20 +1,17 @@
 import * as React from 'react'
-
-import { MainTitle } from '../components/common/customs/CustomContent'
-import { Paragraph } from '../components/common/customs/CustomText'
 import { HtmlHeader } from '../components/HtmlHeader'
 import { Layout } from '../components/layout'
+import { CallToAction } from '../components/common/CallToAction'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
 import { AppContextType } from '@vitrine/common/src/configuration/context'
 
-const NotFoundPage = ({
+const ExpertisePage = ({
   navigationInteractor: { navigateTo },
 }: AppContextType) => (
   <Layout {...{ navigateTo }}>
-    <HtmlHeader title="404: Not found" />
-    <MainTitle>NOT FOUND</MainTitle>
-    <Paragraph>You just hit a route that does not exist.</Paragraph>
+    <HtmlHeader title="Career history" />
+    <CallToAction onPress={() => navigateTo('contact')} />
   </Layout>
 )
 
-export default withContext(NotFoundPage)
+export default withContext(ExpertisePage)

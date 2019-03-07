@@ -1,12 +1,18 @@
 import * as React from 'react'
 import { StyleSheet } from 'react-native'
 import { CustomColor } from './CustomColor'
-import { CustomTextProps, Heading1, Heading2, Paragraph } from './CustomText'
+import {
+  CustomTextProps,
+  Heading1,
+  Heading2,
+  Heading4,
+  Paragraph,
+} from './CustomText'
+import { Centered } from './CustomView'
 
 const styles = StyleSheet.create({
   mainTitle: {
     marginVertical: 20,
-    textAlign: 'center',
     lineHeight: 46.8,
   },
   mainIntro: {
@@ -17,11 +23,29 @@ const styles = StyleSheet.create({
   boxTitle: {
     marginTop: 10,
     marginBottom: 25,
-    textAlign: 'center',
     lineHeight: 46.8,
+  },
+  boxSubtitle: {
+    color: CustomColor.greyL,
+    marginTop: -20,
+    marginBottom: 30,
+    lineHeight: 27.2,
+    textTransform: 'uppercase',
   },
   boxContent: {
     marginTop: -10,
+  },
+  boxSubtitleHrContainer: {
+    width: '100%',
+    marginTop: 10,
+    marginBottom: 30,
+    borderBottomWidth: 1,
+    borderBottomColor: CustomColor.greyLLL,
+  },
+  boxSubtitleHr: {
+    padding: 10,
+    top: 52,
+    position: 'relative',
   },
 })
 
@@ -43,13 +67,36 @@ export const BoxTitle = (props: CustomTextProps) => (
   />
 )
 
+export const BoxSubtitle = (props: CustomTextProps) => (
+  <Heading4
+    {...props}
+    center
+    style={[styles.boxSubtitle, props.style]}
+    color={CustomColor.black}
+    weight="thin"
+  />
+)
+
+export const BoxSubtitleHr = (props: CustomTextProps) => (
+  <Centered style={styles.boxSubtitleHrContainer}>
+    <Heading4
+      {...props}
+      center
+      backgroundColor={CustomColor.white}
+      style={[styles.boxSubtitle, styles.boxSubtitleHr, props.style]}
+      color={CustomColor.greyL}
+      weight="thin"
+    />
+  </Centered>
+)
+
 export const BoxContent = (props: CustomTextProps) => (
   <Paragraph
-    {...props}
     center
     size="m"
     style={[styles.boxContent, props.style]}
     color={CustomColor.black}
+    {...props}
   />
 )
 

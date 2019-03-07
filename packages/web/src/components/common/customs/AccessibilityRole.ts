@@ -13,3 +13,4 @@ export type AccessibilityRole =
   | 'heading'
   | 'navigation'
   | 'main'
+  | 'article'

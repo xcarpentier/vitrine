@@ -1,16 +1,18 @@
 import * as React from 'react'
-import { StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 import { CustomColor } from '../customs/CustomColor'
 import { CustomView, CustomViewProps } from '../customs/CustomView'
 
 const styles = StyleSheet.create({
   nav: {
     ...StyleSheet.absoluteFillObject,
+    // @ts-ignore
+    position: Platform.select({ web: 'fixed', default: 'absolute' }),
     bottom: undefined,
     height: 81,
     padding: 21,
     backgroundColor: CustomColor.whiteT,
-    borderBottomColor: CustomColor.greyLL,
+    borderBottomColor: CustomColor.greyLLL,
     borderBottomWidth: 1,
     zIndex: 4,
   },
@@ -18,6 +20,8 @@ const styles = StyleSheet.create({
     top: undefined,
     bottom: 0,
     borderBottomWidth: 0,
+    height: 81,
+    padding: 21,
   },
   footerContainer: {
     maxWidth: 800,
@@ -34,6 +38,7 @@ const NavContentContainer = (props: CustomViewProps) => (
     direction="row"
     justify="space-evenly"
     align="center"
+    wrap="wrap-reverse"
     style={[props.style]}
     {...props}
   />

@@ -21,6 +21,7 @@ const BaseStyle = StyleSheet.create({
   },
   mainContainer: {
     width: '100%',
+    paddingHorizontal: 20,
   },
   main: {
     maxWidth: 800,
@@ -28,7 +29,7 @@ const BaseStyle = StyleSheet.create({
   box: {
     paddingVertical: 30,
     borderTopWidth: 1,
-    borderTopColor: CustomColor.greyLL,
+    borderTopColor: CustomColor.greyLLL,
   },
   grid: {
     flexDirection: 'row',
@@ -40,6 +41,17 @@ const BaseStyle = StyleSheet.create({
     height: 274,
     width: 395,
     paddingHorizontal: 15,
+  },
+  borderBox: {
+    flex: 1,
+    padding: 45,
+    borderColor: CustomColor.primary,
+    borderWidth: 2,
+    borderRadius: 4,
+    shadowColor: CustomColor.blackT,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 5,
   },
 })
 
@@ -54,8 +66,10 @@ export interface CustomViewProps extends CustomViewPropsBase {
   direction?: LayerDirection
   justify?: FlexStyle['justifyContent']
   align?: FlexStyle['alignItems']
+  wrap?: FlexStyle['flexWrap']
   backgroundColor?: CustomColor
   center?: boolean
+  fullWidth?: boolean
   children: React.ReactNode
 }
 
@@ -67,6 +81,8 @@ export const CustomView = ({
   style,
   justify: justifyContent,
   align: alignItems,
+  wrap: flexWrap,
+  fullWidth,
   ...props
 }: CustomViewProps) => (
   <ViewBase
@@ -78,6 +94,8 @@ export const CustomView = ({
       direction && { flexDirection: direction },
       justifyContent && { justifyContent },
       alignItems && { alignItems },
+      flexWrap && { flexWrap },
+      fullWidth && { width: '100%' },
       style,
     ]}
     {...props}
@@ -86,6 +104,10 @@ export const CustomView = ({
 
 export const Centered = (props: CustomViewProps) => (
   <CustomView center {...props} />
+)
+
+export const Row = (props: CustomViewProps) => (
+  <CustomView direction="row" {...props} />
 )
 
 export const MainContainer = (props: CustomViewProps) => (
@@ -116,4 +138,8 @@ export const Grid = (props: CustomViewProps) => (
 
 export const GridItem = (props: CustomViewProps) => (
   <Centered style={[BaseStyle.gridItem, props.style]} {...props} />
+)
+
+export const BorderBox = (props: CustomViewProps) => (
+  <Centered style={[BaseStyle.borderBox, props.style]} {...props} />
 )

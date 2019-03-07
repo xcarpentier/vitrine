@@ -1,0 +1,19 @@
+{
+  "name": "@vitrine/common",
+  "private": true,
+  "version": "0.0.1",
+  "description": "vitrine: common",
+  "files": ["./src/*"],
+  "scripts": {
+    "clean": "echo 'TODO: clean'",
+    "compile": "tsc --noEmit",
+    "build": "echo 'TODO: clean'",
+    "deploy": "echo 'TODO: deploy'",
+    "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'",
+    "lint": "tslint -p .",
+    "start": "gatsby develop",
+    "test": "echo 'TODO: test'"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
