@@ -6,8 +6,8 @@
   "scripts": {
     "clean": "rm -rf ./dist/ && rm -rf ./public/ && rm -rf ./.cache/",
     "compile": "tsc --noEmit",
-    "build": "gatsby develop",
-    "deploy": "yarn clean && yarn compile && yarn build && echo 'TODO: deploy to github pages'",
+    "build": "gatsby build --prefix-paths",
+    "deploy": "yarn clean && yarn compile && yarn build && gh-pages -d public",
     "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'",
     "lint": "tslint -p .",
     "start": "gatsby develop",
@@ -39,6 +39,7 @@
     "@types/react-helmet": "5.0.8",
     "@types/react-native": "0.57.38",
     "babel-plugin-react-native-web": "0.10.0",
+    "gh-pages": "2.0.1",
     "prettier": "^1.16.4",
     "tslint": "^5.13.0",
     "tslint-config-prettier": "^1.18.0",
