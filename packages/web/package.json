@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf ./dist/ && rm -rf ./public/ && rm -rf ./.cache/",
     "compile": "tsc --noEmit",
-    "build": "gatsby build --prefix-paths",
+    "build": "gatsby build",
     "deploy": "yarn clean && yarn compile && yarn build && gh-pages -d public",
     "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'",
     "lint": "tslint -p .",
