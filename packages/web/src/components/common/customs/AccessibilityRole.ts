@@ -14,3 +14,5 @@ export type AccessibilityRole =
   | 'navigation'
   | 'main'
   | 'article'
+  | 'list'
+  | 'listitem'

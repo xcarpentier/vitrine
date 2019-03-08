@@ -1,0 +1,12 @@
+export type RouteName =
+  | '/'
+  | 'project'
+  | 'project/sneat'
+  | 'project/papott'
+  | 'project/docdok'
+  | 'reactnative'
+  | 'contact'
+  | 'papott'
+  | 'sneat'
+  | 'docdok'
+  | 'expertise'

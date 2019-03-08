@@ -22,23 +22,42 @@ export const NavItemContainer = (props: NavItemContainerProps) => (
   <View style={styles.container} {...props} />
 )
 
+const getTextColor = ({
+  color,
+  active,
+}: {
+  color?: CustomColor
+  active?: boolean
+}): CustomColor => {
+  if (color) {
+    return color
+  }
+  return active ? CustomColor.primary : CustomColor.blackL
+}
+
 interface NavItemProps {
   title: string
   color?: CustomColor
   externalLink?: string
   asButton?: boolean
+  active?: boolean
   onPress(): void
 }
-export const NavItem = ({ title, onPress, asButton, color }: NavItemProps) => (
+export const NavItem = ({
+  title,
+  onPress,
+  asButton,
+  active,
+  color,
+}: NavItemProps) => (
   <>
     {asButton ? (
       <CustomButton {...{ title, onPress }} />
     ) : (
       <TouchableOpacity onPress={onPress} style={styles.item}>
         <CustomText
-          color={color ? color : CustomColor.blackL}
-          weight="thin"
-          accessible
+          color={getTextColor({ color, active })}
+          weight={active ? 'normal' : 'thin'}
           accessibilityRole="link"
         >
           {title}

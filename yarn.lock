@@ -9483,6 +9483,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rngallery-player@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/rngallery-player/-/rngallery-player-1.0.2.tgz#2044b08cdd6b385d71ee6c29f21e2b5f7b70244c"
+  integrity sha512-zZbU6SkMcLWTm0rta3gn1fcCcuWKOw7m3sSv/rg93GGNbI0y4TxbRxTIkVZFfZ//63NcuDH/t3BxBFPHbLEO/g==
+
 run-async@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.3.0.tgz#0371ab4ae0bdd720d4166d7dfda64ff7a445a6c0"

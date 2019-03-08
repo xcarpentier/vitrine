@@ -128,8 +128,15 @@ export const MainHead = (props: CustomViewProps) => (
   <Centered style={[BaseStyle.mainHead, props.style]} {...props} />
 )
 
-export const Box = (props: CustomViewProps) => (
-  <Centered style={[BaseStyle.box, props.style]} {...props} />
+export const Box = (props: CustomViewProps & { noBorder?: boolean }) => (
+  <Centered
+    style={[
+      BaseStyle.box,
+      props.noBorder && { borderTopWidth: 0 },
+      props.style,
+    ]}
+    {...props}
+  />
 )
 
 export const Grid = (props: CustomViewProps) => (

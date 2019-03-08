@@ -8,9 +8,11 @@ import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/wi
 import { AppContextType } from '@vitrine/common/src/configuration/context'
 
 const NotFoundPage = ({
-  navigationInteractor: { navigateTo },
+  navigateTo,
+  currentRoute,
+  navigationInteractor: { openURL },
 }: AppContextType) => (
-  <Layout {...{ navigateTo }}>
+  <Layout {...{ navigateTo, currentRoute, openURL }}>
     <HtmlHeader title="404: Not found" />
     <MainTitle>NOT FOUND</MainTitle>
     <Paragraph>You just hit a route that does not exist.</Paragraph>

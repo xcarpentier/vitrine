@@ -11,9 +11,11 @@ import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/wi
 import { AppContextType } from '@vitrine/common/src/configuration/context'
 
 const ContactPage = ({
-  navigationInteractor: { navigateTo },
+  navigateTo,
+  currentRoute,
+  navigationInteractor: { openURL },
 }: AppContextType) => (
-  <Layout {...{ navigateTo }}>
+  <Layout {...{ navigateTo, currentRoute, openURL }}>
     <HtmlHeader title="Contact me!" />
     <MainHead style={{ maxWidth: 510 }}>
       <MainTitle>Contact me!</MainTitle>

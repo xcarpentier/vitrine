@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.1",
   "description": "vitrine: common",
-  "files": ["./src/*"],
   "scripts": {
     "clean": "echo 'TODO: clean'",
     "compile": "tsc --noEmit",

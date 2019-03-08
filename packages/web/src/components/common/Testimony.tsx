@@ -8,10 +8,20 @@ const styles = StyleSheet.create({
   testimonyContent: {
     padding: 15,
   },
-  image: {
+  small: {
     width: 36,
     height: 36,
     borderRadius: 18,
+  },
+  medium: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+  },
+  large: {
+    width: 144,
+    height: 144,
+    borderRadius: 72,
   },
 })
 
@@ -25,21 +35,42 @@ export const TestimonyContent = (props: CustomTextProps) => (
 )
 
 interface TestimonyAuthorProps {
-  name: string
-  label: string
+  name?: string
+  label?: string
   source: ImageSourcePropType
+  size?: 's' | 'm' | 'l'
 }
 export const TestimonyAuthor = ({
   source,
   name,
   label,
+  size,
 }: TestimonyAuthorProps) => (
   <Row>
-    <Image {...{ source }} style={styles.image} />
+    <Image
+      {...{ source }}
+      style={(() => {
+        switch (size) {
+          case 's': {
+            return styles.small
+          }
+          case 'm': {
+            return styles.medium
+          }
+          case 'l': {
+            return styles.large
+          }
+          default: {
+            return styles.small
+          }
+        }
+      })()}
+    />
+
     <CustomText size="s" style={{ maxWidth: 120, paddingLeft: 10 }}>
-      {name} {'\n'}
+      {name || ''} {'\n'}
       <CustomText size="s" color={CustomColor.greyLL}>
-        {label}
+        {label || ''}
       </CustomText>
     </CustomText>
   </Row>

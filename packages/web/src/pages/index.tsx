@@ -24,11 +24,8 @@ import {
   Box,
   Centered,
   CustomView,
-  Grid,
-  GridItem,
   MainHead,
 } from '../components/common/customs/CustomView'
-import { ProjectItem } from '../components/common/ProjectItem'
 import { StepContainer, StepItem } from '../components/common/Step'
 import {
   TestimonyAuthor,
@@ -39,11 +36,14 @@ import { Layout } from '../components/layout'
 
 import { AppContextType } from '@vitrine/common/src/configuration/context'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
+import { ProjectGrid } from '../components/shared/ProjectGrid'
 
 const IndexPage = ({
-  navigationInteractor: { navigateTo },
+  navigateTo,
+  currentRoute,
+  navigationInteractor: { openURL },
 }: AppContextType) => (
-  <Layout {...{ navigateTo }}>
+  <Layout {...{ navigateTo, currentRoute, openURL }}>
     <HtmlHeader title="Xavier Carpentier" />
     <MainHead>
       <MainTitle>Need to quickly develop a high-end mobile app?</MainTitle>
@@ -56,7 +56,7 @@ const IndexPage = ({
       <CustomButton
         size="l"
         title="Contact me!"
-        onPress={() => navigateTo('contact')}
+        onPress={() => openURL('mailto:xcapetir@gmail.com')}
       />
     </MainHead>
     <Box>
@@ -69,36 +69,7 @@ const IndexPage = ({
         ), I have been able to develop and benefit from a fast and responsive
         application all at once. Here's what I came up with:
       </BoxContent>
-      <Grid>
-        <GridItem>
-          <ProjectItem
-            source={require('../images/papott.jpg')}
-            title="9 days to develop an application"
-            onPress={() => navigateTo('papott')}
-          />
-        </GridItem>
-        <GridItem>
-          <ProjectItem
-            source={require('../images/sneat.jpg')}
-            title="App with notification & payment"
-            onPress={() => navigateTo('sneat')}
-          />
-        </GridItem>
-        <GridItem>
-          <ProjectItem
-            source={require('../images/docdok.jpg')}
-            title="A platform for communication between doctors and patients."
-            onPress={() => navigateTo('docdok')}
-          />
-        </GridItem>
-        <GridItem>
-          <ProjectItem
-            source={require('../images/your_app_here.jpeg')}
-            title="Your app here?"
-            onPress={() => navigateTo('contact')}
-          />
-        </GridItem>
-      </Grid>
+      <ProjectGrid {...{ navigateTo }} />
     </Box>
     <Box>
       <Article>
@@ -203,7 +174,7 @@ const IndexPage = ({
       <Article>
         <ArticleXSLayer>
           <TestimonyContent>
-            "Xavier is a great professional which specialises in mobile
+            "Xavier is a great professional which specializes in mobile
             development. I am looking forward to work with him in the future
             again."
           </TestimonyContent>
@@ -249,7 +220,7 @@ const IndexPage = ({
         </ArticleXSLayer>
       </Article>
     </Box>
-    <CallToAction onPress={() => navigateTo('contact')} />
+    <CallToAction onPress={() => openURL('mailto:xcapetir@gmail.com')} />
   </Layout>
 )
 

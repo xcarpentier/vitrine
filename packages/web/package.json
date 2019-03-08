@@ -14,6 +14,7 @@
     "test": "echo 'TODO: test'"
   },
   "dependencies": {
+    "@vitrine/common": "0.0.1",
     "gatsby": "2.1.19",
     "gatsby-image": "^2.0.30",
     "gatsby-plugin-manifest": "^2.0.20",
@@ -28,7 +29,7 @@
     "react-dom": "16.8.3",
     "react-helmet": "^5.2.0",
     "react-native-web": "0.10.0",
-    "@vitrine/common": "0.0.1"
+    "rngallery-player": "1.0.2"
   },
   "devDependencies": {
     "@types/jest": "^23.3.10",

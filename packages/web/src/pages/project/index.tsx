@@ -2,19 +2,23 @@ import * as React from 'react'
 import {
   MainIntro,
   MainTitle,
-  BoxTitle,
-} from '../components/common/customs/CustomContent'
-import { MainHead, Box } from '../components/common/customs/CustomView'
-import { HtmlHeader } from '../components/HtmlHeader'
-import { Layout } from '../components/layout'
-import { CallToAction } from '../components/common/CallToAction'
+} from '../../components/common/customs/CustomContent'
+import { MainHead } from '../../components/common/customs/CustomView'
+import { HtmlHeader } from '../../components/HtmlHeader'
+import { Layout } from '../../components/layout'
+import { CallToAction } from '../../components/common/CallToAction'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
 import { AppContextType } from '@vitrine/common/src/configuration/context'
+import { SneatBox } from './sneat'
+import { PapottBox } from './papott'
+import { DocdokBox } from './docdok'
 
 const ProjectPage = ({
-  navigationInteractor: { navigateTo },
+  navigateTo,
+  currentRoute,
+  navigationInteractor: { openURL },
 }: AppContextType) => (
-  <Layout {...{ navigateTo }}>
+  <Layout {...{ navigateTo, currentRoute, openURL }}>
     <HtmlHeader title="Success stories" />
     <MainHead>
       <MainTitle>
@@ -25,10 +29,10 @@ const ProjectPage = ({
         resulting in a fast and responsive application.
       </MainIntro>
     </MainHead>
-    <Box>
-      <BoxTitle>TODO</BoxTitle>
-    </Box>
-    <CallToAction onPress={() => navigateTo('contact')} />
+    <SneatBox {...{ navigateTo }} />
+    <PapottBox />
+    <DocdokBox />
+    <CallToAction onPress={() => openURL('mailto:xcapetir@gmail.com')} />
   </Layout>
 )
 

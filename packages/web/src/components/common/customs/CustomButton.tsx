@@ -35,6 +35,7 @@ const BaseStyle = StyleSheet.create({
   large: {
     paddingHorizontal: 16,
     paddingVertical: 10,
+    borderRadius: 6,
   },
 })
 

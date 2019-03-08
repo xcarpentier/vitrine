@@ -4,4 +4,5 @@ import { inMemoryDependencies } from '../../../configuration/dependencies'
 
 export const AppContext = React.createContext<AppContextType>({
   ...inMemoryDependencies,
+  navigateTo: () => {},
 })

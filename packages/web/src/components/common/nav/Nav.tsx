@@ -29,7 +29,11 @@ const styles = StyleSheet.create({
 })
 
 const NavContainer = (props: CustomViewProps) => (
-  <CustomView style={[styles.nav, props.style]} {...props} />
+  <CustomView
+    style={[styles.nav, props.style]}
+    {...props}
+    accessibilityRole="navigation"
+  />
 )
 
 const NavContentContainer = (props: CustomViewProps) => (

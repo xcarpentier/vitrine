@@ -1,7 +1,12 @@
 import * as React from 'react'
 import { StyleSheet } from 'react-native'
 import { CustomColor } from './customs/CustomColor'
-import { CustomTextProps, Heading2, Paragraph } from './customs/CustomText'
+import {
+  CustomTextProps,
+  Heading2,
+  Paragraph,
+  Heading4,
+} from './customs/CustomText'
 import { CustomView, CustomViewProps } from './customs/CustomView'
 
 const styles = StyleSheet.create({
@@ -11,11 +16,15 @@ const styles = StyleSheet.create({
   articleTitle: {
     marginBottom: 14,
   },
+  articleSubtitle: {
+    textTransform: 'uppercase',
+  },
   articleContent: {
     marginBottom: 14,
   },
   layer: {
     minWidth: 200,
+    padding: 5,
   },
   medium: {
     width: '65%',
@@ -65,6 +74,19 @@ export const ArticleTitle = (props: CustomTextProps) => (
     style={[styles.articleTitle, props.style]}
     color={CustomColor.black}
   />
+)
+
+export const ArticleSubtile = (props: CustomTextProps) => (
+  <Heading4
+    {...props}
+    style={[styles.articleSubtitle, props.style]}
+    color={CustomColor.greyLL}
+    weight="thin"
+  />
+)
+
+export const ArticleSubtileSmall = (props: CustomTextProps) => (
+  <ArticleSubtile {...props} size="xs" />
 )
 
 export const ArticleContent = (props: CustomTextProps) => (
