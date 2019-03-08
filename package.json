@@ -12,8 +12,7 @@
   },
   "workspaces": {
     "packages": [
-      "packages/web",
-      "packages/common"
+      "packages/*"
     ]
   },
   "scripts": {
