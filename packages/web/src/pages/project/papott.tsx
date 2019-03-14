@@ -20,6 +20,7 @@ import { AppContextType } from '@vitrine/common/src/configuration/context'
 import { HtmlHeader } from '../../components/HtmlHeader'
 import { TestimonyAuthor } from '../../components/common/Testimony'
 import { CallToAction } from '../../components/common/CallToAction'
+import { PageRendererProps } from 'gatsby'
 
 export const PapottBox = ({ isPage }: { isPage?: boolean }) => (
   <>
@@ -84,11 +85,12 @@ const PapottPage = ({
   navigateTo,
   currentRoute,
   navigationInteractor: { openURL },
-}: AppContextType) => (
-  <Layout {...{ navigateTo, currentRoute, openURL }}>
-    <HtmlHeader title="papott" />
+  location: { pathname },
+}: AppContextType & PageRendererProps) => (
+  <Layout {...{ navigateTo, currentRoute, openURL, pathname }} title="papott">
+    <HtmlHeader />
     <PapottBox isPage />
-    <CallToAction onPress={() => openURL('mailto:xcapetir@gmail.com')} />
+    <CallToAction onPress={() => openURL('mailto:xcapetir+papott@gmail.com')} />
   </Layout>
 )
 

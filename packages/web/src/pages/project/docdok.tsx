@@ -13,9 +13,9 @@ import Player from 'rngallery-player'
 import { Layout } from '../../components/layout'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
 import { AppContextType } from '@vitrine/common/src/configuration/context'
-import { HtmlHeader } from '../../components/HtmlHeader'
 import { TestimonyAuthor } from '../../components/common/Testimony'
 import { CallToAction } from '../../components/common/CallToAction'
+import { PageRendererProps } from 'gatsby'
 
 export const DocdokBox = ({ isPage }: { isPage?: boolean }) => (
   <>
@@ -87,9 +87,9 @@ const DocdokPage = ({
   navigateTo,
   currentRoute,
   navigationInteractor: { openURL },
-}: AppContextType) => (
-  <Layout {...{ navigateTo, currentRoute, openURL }}>
-    <HtmlHeader title="sneat" />
+  location: { pathname },
+}: AppContextType & PageRendererProps) => (
+  <Layout {...{ navigateTo, currentRoute, openURL, pathname }} title="sneat">
     <DocdokBox isPage />
     <CallToAction onPress={() => openURL('mailto:xcapetir@gmail.com')} />
   </Layout>

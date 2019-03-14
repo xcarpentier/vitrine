@@ -1,9 +1,6 @@
 import * as React from 'react'
-import { HtmlHeader } from '../components/HtmlHeader'
-import { Layout } from '../components/layout'
 import { CallToAction } from '../components/common/CallToAction'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
-import { AppContextType } from '@vitrine/common/src/configuration/context'
 import {
   Article,
   ArticleMediumLayer,
@@ -15,14 +12,14 @@ import {
 import { Image } from 'react-native'
 import { CustomLink } from '../components/common/customs/CustomText'
 import { Box } from '../components/common/customs/CustomView'
+import { compose } from 'recompose'
+import {
+  PageProps,
+  withLayout,
+} from '../components/higherOrderComponent/withLayout'
 
-const ExpertisePage = ({
-  navigateTo,
-  currentRoute,
-  navigationInteractor: { openURL },
-}: AppContextType) => (
-  <Layout {...{ navigateTo, currentRoute, openURL }}>
-    <HtmlHeader title="Career history" />
+const ExpertisePage = ({ navigateTo, openURL }: PageProps) => (
+  <>
     <Box noBorder>
       <Article>
         <ArticleSmallLayer>
@@ -151,8 +148,13 @@ const ExpertisePage = ({
       </Article>
     </Box>
 
-    <CallToAction onPress={() => openURL('mailto:xcapetir@gmail.com')} />
-  </Layout>
+    <CallToAction
+      onPress={() => openURL('mailto:xcapetir+expertise@gmail.com')}
+    />
+  </>
 )
 
-export default withContext(ExpertisePage)
+export default compose<PageProps, any>(
+  withContext,
+  withLayout({ title: 'Career history' }),
+)(ExpertisePage)

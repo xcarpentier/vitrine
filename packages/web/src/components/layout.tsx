@@ -7,6 +7,7 @@ import { Footer, Nav } from './common/nav/Nav'
 import { FootItem, NavItem, NavItemContainer } from './common/nav/NavItem'
 import { NavLogo } from './common/nav/NavLogo'
 import { RouteName } from '@vitrine/common/src/core/domain/gateways/RouteName'
+import { HtmlHeader } from './HtmlHeader'
 
 const styles = StyleSheet.create({
   main: {
@@ -21,18 +22,21 @@ const styles = StyleSheet.create({
 
 interface LayoutProps {
   children: React.ReactNode
-  currentRoute?: RouteName
+  title?: string
+  pathname?: string
   navigateTo(routeName: RouteName, params?: any): void
   openURL(url: string): void
 }
 
 export const Layout = ({
   navigateTo,
-  currentRoute,
   children,
   openURL,
+  title,
+  pathname,
 }: LayoutProps) => (
   <>
+    <HtmlHeader {...{ title }} />
     <Nav>
       <NavLogo onPress={() => navigateTo('/')}>
         <CustomText
@@ -46,23 +50,26 @@ export const Layout = ({
       </NavLogo>
       <NavItemContainer>
         <NavItem
-          active={currentRoute === '/'}
+          active={pathname === '/'}
           title="Home"
           onPress={() => navigateTo('/')}
+          href="/"
         />
         <NavItem
-          active={currentRoute && currentRoute.startsWith('project')}
+          active={pathname!.startsWith('project')}
           title="Project"
           onPress={() => navigateTo('project')}
+          href="/project"
         />
         <NavItem
-          active={currentRoute === 'expertise'}
+          active={pathname!.startsWith('expertise')}
           title="Expertise"
           onPress={() => navigateTo('expertise')}
+          href="/expertise"
         />
         <NavItem
           title="Contact me!"
-          onPress={() => openURL('mailto:xcapetir@gmail.com')}
+          onPress={() => openURL('mailto:xcapetir+nav@gmail.com')}
           asButton
         />
       </NavItemContainer>

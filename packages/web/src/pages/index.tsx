@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Image } from 'react-native'
+import { compose } from 'recompose'
 import {
   Article,
   ArticleContent,
@@ -31,20 +32,17 @@ import {
   TestimonyAuthor,
   TestimonyContent,
 } from '../components/common/Testimony'
-import { HtmlHeader } from '../components/HtmlHeader'
-import { Layout } from '../components/layout'
 
-import { AppContextType } from '@vitrine/common/src/configuration/context'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
 import { ProjectGrid } from '../components/shared/ProjectGrid'
 
-const IndexPage = ({
-  navigateTo,
-  currentRoute,
-  navigationInteractor: { openURL },
-}: AppContextType) => (
-  <Layout {...{ navigateTo, currentRoute, openURL }}>
-    <HtmlHeader title="Xavier Carpentier" />
+import {
+  withLayout,
+  PageProps,
+} from '../components/higherOrderComponent/withLayout'
+
+const IndexPage = ({ navigateTo, openURL }: PageProps) => (
+  <>
     <MainHead>
       <MainTitle>Need to quickly develop a high-end mobile app?</MainTitle>
       <MainIntro>
@@ -56,14 +54,17 @@ const IndexPage = ({
       <CustomButton
         size="l"
         title="Contact me!"
-        onPress={() => openURL('mailto:xcapetir@gmail.com')}
+        onPress={() => openURL('mailto:xcapetir+home@gmail.com')}
       />
     </MainHead>
     <Box>
       <BoxTitle>Some Success Stories</BoxTitle>
       <BoxContent>
         Making the most of Facebook technology (
-        <CustomLink onPress={() => navigateTo('reactnative')}>
+        <CustomLink
+          onPress={() => navigateTo('reactnative')}
+          href="/reactnative"
+        >
           React Native
         </CustomLink>
         ), I have been able to develop and benefit from a fast and responsive
@@ -220,8 +221,11 @@ const IndexPage = ({
         </ArticleXSLayer>
       </Article>
     </Box>
-    <CallToAction onPress={() => openURL('mailto:xcapetir@gmail.com')} />
-  </Layout>
+    <CallToAction onPress={() => openURL('mailto:xcapetir+cta@gmail.com')} />
+  </>
 )
 
-export default withContext(IndexPage)
+export default compose<PageProps, any>(
+  withContext,
+  withLayout({ title: 'Xavier Carpentier' }),
+)(IndexPage)

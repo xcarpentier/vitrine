@@ -11,6 +11,7 @@ import { CustomText } from './CustomText'
 interface CustomButtonProps extends TouchableOpacityProps {
   title: string
   size?: 'm' | 'l'
+  href?: string
 }
 
 const BaseStyle = StyleSheet.create({
@@ -43,6 +44,7 @@ export const CustomButton = ({
   title,
   style,
   size,
+  href,
   ...props
 }: CustomButtonProps) => (
   <TouchableOpacity
@@ -56,6 +58,7 @@ export const CustomButton = ({
     accessibilityRole="button"
   >
     <CustomText
+      {...{ href }}
       color={CustomColor.white}
       weight="thin"
       size={size === 'l' ? 'm' : 's'}

@@ -1,5 +1,11 @@
 import * as React from 'react'
-import { StyleSheet, TouchableOpacity, View, ViewProps } from 'react-native'
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewProps,
+  GestureResponderEvent,
+} from 'react-native'
 import { CustomButton } from '../customs/CustomButton'
 import { CustomColor } from '../customs/CustomColor'
 import { CustomText } from '../customs/CustomText'
@@ -41,6 +47,7 @@ interface NavItemProps {
   externalLink?: string
   asButton?: boolean
   active?: boolean
+  href?: string
   onPress(): void
 }
 export const NavItem = ({
@@ -49,16 +56,22 @@ export const NavItem = ({
   asButton,
   active,
   color,
+  href,
 }: NavItemProps) => (
   <>
     {asButton ? (
-      <CustomButton {...{ title, onPress }} />
+      <CustomButton {...{ title, onPress, href }} />
     ) : (
       <TouchableOpacity onPress={onPress} style={styles.item}>
         <CustomText
+          {...{ href }}
           color={getTextColor({ color, active })}
           weight={active ? 'normal' : 'thin'}
           accessibilityRole="link"
+          onPress={(e: GestureResponderEvent) => {
+            e.preventDefault()
+            return false
+          }}
         >
           {title}
         </CustomText>

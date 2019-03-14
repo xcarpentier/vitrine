@@ -64,7 +64,7 @@ const SneatPage = ({
   <Layout {...{ navigateTo, currentRoute, openURL }}>
     <HtmlHeader title="sneat" />
     <SneatBox {...{ navigateTo }} isPage />
-    <CallToAction onPress={() => openURL('mailto:xcapetir@gmail.com')} />
+    <CallToAction onPress={() => openURL('mailto:xcapetir+sneat@gmail.com')} />
   </Layout>
 )
 

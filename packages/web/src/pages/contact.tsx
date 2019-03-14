@@ -5,18 +5,21 @@ import {
   MainTitle,
 } from '../components/common/customs/CustomContent'
 import { BorderBox, MainHead } from '../components/common/customs/CustomView'
-import { HtmlHeader } from '../components/HtmlHeader'
 import { Layout } from '../components/layout'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
 import { AppContextType } from '@vitrine/common/src/configuration/context'
+import { PageRendererProps } from 'gatsby'
 
 const ContactPage = ({
   navigateTo,
   currentRoute,
   navigationInteractor: { openURL },
-}: AppContextType) => (
-  <Layout {...{ navigateTo, currentRoute, openURL }}>
-    <HtmlHeader title="Contact me!" />
+  location: { pathname },
+}: AppContextType & PageRendererProps) => (
+  <Layout
+    {...{ navigateTo, currentRoute, openURL, pathname }}
+    title="Contact me!"
+  >
     <MainHead style={{ maxWidth: 510 }}>
       <MainTitle>Contact me!</MainTitle>
       <MainIntro>

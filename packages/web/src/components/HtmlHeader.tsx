@@ -40,10 +40,6 @@ export function HtmlHeader({
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       link={[
         {
-          href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,600',
-          rel: 'stylesheet',
-        },
-        {
           href: '//31.media.tumblr.com/avatar_ab7b0e10f1c2_128.png',
           rel: 'shortcut icon',
           type: 'image/png',

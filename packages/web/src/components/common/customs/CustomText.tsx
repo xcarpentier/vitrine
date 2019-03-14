@@ -1,5 +1,10 @@
 import * as React from 'react'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  GestureResponderEvent,
+} from 'react-native'
 import { AccessibilityRole } from './AccessibilityRole'
 import { CustomColor } from './CustomColor'
 import { Omit } from './Omit'
@@ -19,6 +24,7 @@ export interface CustomTextProps extends CustomTextPropsBase {
   center?: boolean
   children: React.ReactNode
   weight?: CustomWeight
+  href?: string
 }
 
 const TextBase = (Text as any) as React.ComponentType<CustomTextProps>
@@ -131,7 +137,7 @@ export const Paragraph = (props: CustomTextProps) => (
   <CustomText weight="thin" size="m" {...props} />
 )
 
-export const CustomLink = (props: CustomTextProps) => (
+export const CustomLink = (props: CustomTextProps & { href?: string }) => (
   <TouchableOpacity onPress={props.onPress} accessibilityRole="link">
     <CustomText
       weight="thin"
@@ -139,6 +145,10 @@ export const CustomLink = (props: CustomTextProps) => (
       color={CustomColor.primary}
       style={[BaseStyle.link, props.style]}
       {...props}
+      onPress={(e: GestureResponderEvent) => {
+        e.preventDefault()
+        return false
+      }}
     />
   </TouchableOpacity>
 )

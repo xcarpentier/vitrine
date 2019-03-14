@@ -1,9 +1,6 @@
 import * as React from 'react'
-import { HtmlHeader } from '../components/HtmlHeader'
-import { Layout } from '../components/layout'
 import { CallToAction } from '../components/common/CallToAction'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
-import { AppContextType } from '@vitrine/common/src/configuration/context'
 import { MainHead, Box } from '../components/common/customs/CustomView'
 import {
   MainTitle,
@@ -23,13 +20,14 @@ import { StepContainer, StepItem } from '../components/common/Step'
 import { ProjectGrid } from '../components/shared/ProjectGrid'
 import { CustomLink } from '../components/common/customs/CustomText'
 
-const ReactNativePage = ({
-  navigateTo,
-  currentRoute,
-  navigationInteractor: { openURL },
-}: AppContextType) => (
-  <Layout {...{ navigateTo, currentRoute, openURL }}>
-    <HtmlHeader title="Development with React Native" />
+import {
+  PageProps,
+  withLayout,
+} from '../components/higherOrderComponent/withLayout'
+import { compose } from 'recompose'
+
+const ReactNativePage = ({ navigateTo, openURL }: PageProps) => (
+  <>
     <MainHead>
       <MainTitle>Mobile application development with React Native</MainTitle>
       <MainIntro>
@@ -68,6 +66,7 @@ const ReactNativePage = ({
               numberTitle={3}
               title="Being developed by Facebook"
               subtitle="its development can be trusted"
+              hideBorder
             />
           </StepContainer>
         </ArticleMediumLayer>
@@ -109,8 +108,13 @@ const ReactNativePage = ({
       </Article>
     </Box>
 
-    <CallToAction onPress={() => openURL('mailto:xcapetir@gmail.com')} />
-  </Layout>
+    <CallToAction
+      onPress={() => openURL('mailto:xcapetir+reactnative@gmail.com')}
+    />
+  </>
 )
 
-export default withContext(ReactNativePage)
+export default compose<PageProps, any>(
+  withContext,
+  withLayout({ title: 'React-Native' }),
+)(ReactNativePage)
