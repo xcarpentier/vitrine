@@ -7,7 +7,7 @@ import { Footer, Nav } from './common/nav/Nav'
 import { FootItem, NavItem, NavItemContainer } from './common/nav/NavItem'
 import { NavLogo } from './common/nav/NavLogo'
 import { RouteName } from '@vitrine/common/src/core/domain/gateways/RouteName'
-import { HtmlHeader } from './HtmlHeader'
+import { HtmlHeader, HtmlHeaderProps } from './HtmlHeader'
 
 const styles = StyleSheet.create({
   main: {
@@ -20,12 +20,25 @@ const styles = StyleSheet.create({
   },
 })
 
-interface LayoutProps {
+interface LayoutProps extends HtmlHeaderProps {
   children: React.ReactNode
   title?: string
   pathname?: string
+  currentRoute?: RouteName
   navigateTo(routeName: RouteName, params?: any): void
   openURL(url: string): void
+}
+
+const isActive = ({
+  pathname,
+  currentRoute,
+  routeToTest,
+}: Partial<LayoutProps> & { routeToTest: string }) => {
+  return (
+    (!!pathname && pathname === routeToTest) ||
+    (!!currentRoute && currentRoute === routeToTest) ||
+    (!!currentRoute && currentRoute.startsWith(routeToTest))
+  )
 }
 
 export const Layout = ({
@@ -34,9 +47,11 @@ export const Layout = ({
   openURL,
   title,
   pathname,
+  currentRoute,
+  description,
 }: LayoutProps) => (
   <>
-    <HtmlHeader {...{ title }} />
+    <HtmlHeader {...{ title, description }} />
     <Nav>
       <NavLogo onPress={() => navigateTo('/')}>
         <CustomText
@@ -50,19 +65,27 @@ export const Layout = ({
       </NavLogo>
       <NavItemContainer>
         <NavItem
-          active={pathname === '/'}
+          active={isActive({ pathname, currentRoute, routeToTest: '/' })}
           title="Home"
           onPress={() => navigateTo('/')}
           href="/"
         />
         <NavItem
-          active={pathname!.startsWith('project')}
-          title="Project"
-          onPress={() => navigateTo('project')}
-          href="/project"
+          active={isActive({
+            pathname,
+            currentRoute,
+            routeToTest: 'mobile-development-projects',
+          })}
+          title="Projects"
+          onPress={() => navigateTo('mobile-development-projects')}
+          href="/mobile-development-projects"
         />
         <NavItem
-          active={pathname!.startsWith('expertise')}
+          active={isActive({
+            pathname,
+            currentRoute,
+            routeToTest: 'expertise',
+          })}
           title="Expertise"
           onPress={() => navigateTo('expertise')}
           href="/expertise"

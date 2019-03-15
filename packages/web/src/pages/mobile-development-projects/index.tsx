@@ -4,25 +4,20 @@ import {
   MainTitle,
 } from '../../components/common/customs/CustomContent'
 import { MainHead } from '../../components/common/customs/CustomView'
-import { Layout } from '../../components/layout'
 import { CallToAction } from '../../components/common/CallToAction'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
-import { AppContextType } from '@vitrine/common/src/configuration/context'
 import { SneatBox } from './sneat'
 import { PapottBox } from './papott'
 import { DocdokBox } from './docdok'
-import { PageRendererProps } from 'gatsby'
+import { compose } from 'recompose'
+import {
+  PageProps,
+  withLayout,
+} from '../../components/higherOrderComponent/withLayout'
+import { OpenSourceBox } from '../../components/shared/OpenSourceBox'
 
-const ProjectPage = ({
-  navigateTo,
-  currentRoute,
-  navigationInteractor: { openURL },
-  location: { pathname },
-}: AppContextType & PageRendererProps) => (
-  <Layout
-    {...{ navigateTo, currentRoute, openURL, pathname }}
-    title="Success stories"
-  >
+const ProjectPage = ({ navigateTo, openURL }: PageProps) => (
+  <>
     <MainHead>
       <MainTitle>
         Projects that prove combining speed and quality isn't a myth
@@ -32,13 +27,17 @@ const ProjectPage = ({
         resulting in a fast and responsive application.
       </MainIntro>
     </MainHead>
-    <SneatBox {...{ navigateTo }} />
-    <PapottBox />
-    <DocdokBox />
+    <SneatBox {...{ navigateTo, openURL }} />
+    <PapottBox {...{ openURL }} />
+    <DocdokBox {...{ openURL }} />
+    <OpenSourceBox {...{ navigateTo }} />
     <CallToAction
       onPress={() => openURL('mailto:xcapetir+project@gmail.com')}
     />
-  </Layout>
+  </>
 )
 
-export default withContext(ProjectPage)
+export default compose<PageProps, any>(
+  withContext,
+  withLayout({ title: 'Success stories' }),
+)(ProjectPage)

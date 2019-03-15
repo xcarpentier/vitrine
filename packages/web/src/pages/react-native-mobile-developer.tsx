@@ -12,19 +12,17 @@ import {
   Article,
   ArticleSmallLayer,
   ArticleMediumLayer,
-  ArticleTitle,
-  ArticleContent,
 } from '../components/common/ArticleContent'
 import { Image } from 'react-native'
 import { StepContainer, StepItem } from '../components/common/Step'
 import { ProjectGrid } from '../components/shared/ProjectGrid'
-import { CustomLink } from '../components/common/customs/CustomText'
 
 import {
   PageProps,
   withLayout,
 } from '../components/higherOrderComponent/withLayout'
 import { compose } from 'recompose'
+import { OpenSourceBox } from '../components/shared/OpenSourceBox'
 
 const ReactNativePage = ({ navigateTo, openURL }: PageProps) => (
   <>
@@ -81,33 +79,7 @@ const ReactNativePage = ({ navigateTo, openURL }: PageProps) => (
       </BoxContent>
       <ProjectGrid {...{ navigateTo }} />
     </Box>
-    <Box>
-      <Article>
-        <ArticleMediumLayer>
-          <ArticleTitle>
-            My work is used by over 2,200 developers worldwide
-          </ArticleTitle>
-          <ArticleContent>
-            I take part in improving React Native technology and am involved in
-            the community.{'\n'}
-            {'\n'}
-            <CustomLink
-              onPress={() => openURL('https://github.com/xcarpentier')}
-            >
-              Find out more
-            </CustomLink>
-          </ArticleContent>
-        </ArticleMediumLayer>
-        <ArticleSmallLayer>
-          <Image
-            style={{ flex: 1, width: '90%' }}
-            resizeMode="contain"
-            source={require('../images/choix-pays.jpg')}
-          />
-        </ArticleSmallLayer>
-      </Article>
-    </Box>
-
+    <OpenSourceBox {...{ navigateTo }} />
     <CallToAction
       onPress={() => openURL('mailto:xcapetir+reactnative@gmail.com')}
     />

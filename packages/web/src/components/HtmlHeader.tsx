@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import * as React from 'react'
 import Helmet, { HelmetProps } from 'react-helmet'
 
-interface SEOProps extends HelmetProps {
+export interface HtmlHeaderProps extends HelmetProps {
   description?: string
   lang?: string
   keywords?: string[]
@@ -14,7 +14,7 @@ export function HtmlHeader({
   meta,
   keywords,
   title,
-}: SEOProps) {
+}: HtmlHeaderProps) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -49,8 +49,25 @@ export function HtmlHeader({
           rel: 'apple-touch-icon',
           type: 'image/png',
         },
+        {
+          rel: 'stylesheet',
+          type: 'text/css',
+          href: '/base.css',
+        },
+        {
+          rel: `canonical`,
+          href: `https://xaviercarpentier.com/`,
+        },
       ]}
       meta={[
+        {
+          httpEquiv: `Content-Type`,
+          content: `text/html; charset=utf-8`,
+        },
+        {
+          httpEquiv: `Content-language`,
+          content: `en`,
+        },
         {
           name: `description`,
           content: metaDescription,
@@ -82,6 +99,18 @@ export function HtmlHeader({
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `googlebot`,
+          content: `index,follow`,
+        },
+        {
+          name: `google`,
+          content: `notranslate`,
+        },
+        {
+          name: `url`,
+          content: `https://xaviercarpentier.com/`,
         },
       ]
         .concat(

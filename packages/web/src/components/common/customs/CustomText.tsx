@@ -25,6 +25,7 @@ export interface CustomTextProps extends CustomTextPropsBase {
   children: React.ReactNode
   weight?: CustomWeight
   href?: string
+  target?: HTMLAnchorElement['target']
 }
 
 const TextBase = (Text as any) as React.ComponentType<CustomTextProps>
@@ -137,14 +138,20 @@ export const Paragraph = (props: CustomTextProps) => (
   <CustomText weight="thin" size="m" {...props} />
 )
 
-export const CustomLink = (props: CustomTextProps & { href?: string }) => (
-  <TouchableOpacity onPress={props.onPress} accessibilityRole="link">
+export const CustomLink = ({
+  onPress,
+  style,
+  ...props
+}: CustomTextProps & { href?: string }) => (
+  <TouchableOpacity onPress={onPress}>
     <CustomText
       weight="thin"
       size="m"
       color={CustomColor.primary}
-      style={[BaseStyle.link, props.style]}
+      style={[BaseStyle.link, style]}
       {...props}
+      accessibilityRole={'link'}
+      target="blank"
       onPress={(e: GestureResponderEvent) => {
         e.preventDefault()
         return false

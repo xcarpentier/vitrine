@@ -14,16 +14,19 @@ import {
   ListItem,
 } from '../../components/common/customs/CustomList'
 import Player from 'rngallery-player'
-import { Layout } from '../../components/layout'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
-import { AppContextType } from '@vitrine/common/src/configuration/context'
 import { HtmlHeader } from '../../components/HtmlHeader'
 import { CallToAction } from '../../components/common/CallToAction'
+import {
+  PageProps,
+  withLayout,
+} from '../../components/higherOrderComponent/withLayout'
+import { compose } from 'recompose'
 
 export const SneatBox = ({
   navigateTo,
   isPage,
-}: Partial<AppContextType> & { isPage?: boolean }) => (
+}: Pick<PageProps, 'navigateTo'> & { isPage?: boolean }) => (
   <Box noBorder={isPage}>
     <Article>
       <ArticleSmallLayer>
@@ -37,7 +40,10 @@ export const SneatBox = ({
         </ArticleTitle>
         <ArticleContent>
           Making the most of Facebook technology (
-          <CustomLink onPress={() => navigateTo!('reactnative')}>
+          <CustomLink
+            href="/react-native-mobile-developer"
+            onPress={() => navigateTo('react-native-mobile-developer')}
+          >
             React Native
           </CustomLink>
           ), I have been able to develop and benefit from a fast and responsive
@@ -56,16 +62,19 @@ export const SneatBox = ({
   </Box>
 )
 
-const SneatPage = ({
-  navigateTo,
-  currentRoute,
-  navigationInteractor: { openURL },
-}: AppContextType) => (
-  <Layout {...{ navigateTo, currentRoute, openURL }}>
+const SneatPage = ({ navigateTo, openURL }: PageProps) => (
+  <>
     <HtmlHeader title="sneat" />
-    <SneatBox {...{ navigateTo }} isPage />
+    <SneatBox {...{ navigateTo, openURL }} isPage />
     <CallToAction onPress={() => openURL('mailto:xcapetir+sneat@gmail.com')} />
-  </Layout>
+  </>
 )
 
-export default withContext(SneatPage)
+export default compose<PageProps, any>(
+  withContext,
+  withLayout({
+    title: 'sneat',
+    description:
+      'An application for the last minute booking of the most praised Parisian restaurants',
+  }),
+)(SneatPage)

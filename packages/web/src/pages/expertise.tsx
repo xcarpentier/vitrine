@@ -17,6 +17,7 @@ import {
   PageProps,
   withLayout,
 } from '../components/higherOrderComponent/withLayout'
+import { OpenSourceBox } from '../components/shared/OpenSourceBox'
 
 const ExpertisePage = ({ navigateTo, openURL }: PageProps) => (
   <>
@@ -24,9 +25,9 @@ const ExpertisePage = ({ navigateTo, openURL }: PageProps) => (
       <Article>
         <ArticleSmallLayer>
           <Image
-            style={{ flex: 1, width: '90%' }}
+            style={{ flex: 1, width: '100%' }}
             resizeMode="center"
-            source={require('../images/papott.jpg')}
+            source={require('../images/docdok.jpg')}
           />
         </ArticleSmallLayer>
         <ArticleMediumLayer>
@@ -35,20 +36,40 @@ const ExpertisePage = ({ navigateTo, openURL }: PageProps) => (
           <ArticleContent style={{ minWidth: 510 }}>
             Freelance full-stack mobile developer for startups
             {'\n'}
-            <CustomLink onPress={() => navigateTo('project/papott')}>
-              Papott
-            </CustomLink>
-            {' - '}
-            <CustomLink onPress={() => navigateTo('project/sneat')}>
-              sneat
-            </CustomLink>
-            {' - '}
-            <CustomLink onPress={() => navigateTo('project/docdok')}>
+            <CustomLink
+              onPress={() => navigateTo('mobile-development-projects/docdok')}
+            >
               docdok.health
             </CustomLink>
             {' - '}
-            <CustomLink onPress={() => navigateTo('project/docdok')}>
-              LegalStart & Avostart
+            <CustomLink
+              onPress={() => navigateTo('mobile-development-projects/sneat')}
+            >
+              sneat
+            </CustomLink>
+            {' - '}
+            <CustomLink
+              onPress={() => navigateTo('mobile-development-projects/papott')}
+            >
+              Papott
+            </CustomLink>
+            {' - '}
+            <CustomLink
+              href="https://www.legalstart.fr?from=xaviercarpentier.com"
+              onPress={() =>
+                openURL('https://www.legalstart.fr?from=xaviercarpentier.com')
+              }
+            >
+              LegalStart
+            </CustomLink>
+            {' & '}
+            <CustomLink
+              href="https://www.avostart.fr/?from=xaviercarpentier.com"
+              onPress={() =>
+                openURL('https://www.avostart.fr/?from=xaviercarpentier.com')
+              }
+            >
+              Avostart
             </CustomLink>
           </ArticleContent>
           <ArticleSubtileSmall>2010 - 2014</ArticleSubtileSmall>
@@ -57,7 +78,12 @@ const ExpertisePage = ({ navigateTo, openURL }: PageProps) => (
           <ArticleContent>
             Java Developer {'\n'}
             <CustomLink
-              onPress={() => alert('https://www.monabanq.com/fr/index.html')}
+              href="https://www.monabanq.com/fr/index.html?from=xaviercarpentier.com"
+              onPress={() =>
+                openURL(
+                  'https://www.monabanq.com/fr/index.html?from=xaviercarpentier.com',
+                )
+              }
             >
               monabanq., online bank
             </CustomLink>
@@ -78,7 +104,9 @@ const ExpertisePage = ({ navigateTo, openURL }: PageProps) => (
           <ArticleTitle>Skills</ArticleTitle>
           <ArticleSubtileSmall>mobile</ArticleSubtileSmall>
           <ArticleContent>
-            <CustomLink onPress={() => navigateTo('reactnative')}>
+            <CustomLink
+              onPress={() => navigateTo('react-native-mobile-developer')}
+            >
               React-Native
             </CustomLink>
             {' - '}
@@ -147,7 +175,7 @@ const ExpertisePage = ({ navigateTo, openURL }: PageProps) => (
         </ArticleMediumLayer>
       </Article>
     </Box>
-
+    <OpenSourceBox {...{ navigateTo }} />
     <CallToAction
       onPress={() => openURL('mailto:xcapetir+expertise@gmail.com')}
     />

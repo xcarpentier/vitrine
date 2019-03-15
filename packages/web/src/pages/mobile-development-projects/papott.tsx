@@ -14,15 +14,22 @@ import {
   ListItem,
 } from '../../components/common/customs/CustomList'
 import Player from 'rngallery-player'
-import { Layout } from '../../components/layout'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
-import { AppContextType } from '@vitrine/common/src/configuration/context'
 import { HtmlHeader } from '../../components/HtmlHeader'
 import { TestimonyAuthor } from '../../components/common/Testimony'
 import { CallToAction } from '../../components/common/CallToAction'
-import { PageRendererProps } from 'gatsby'
+import {
+  PageProps,
+  withLayout,
+} from '../../components/higherOrderComponent/withLayout'
+import { compose } from 'recompose'
 
-export const PapottBox = ({ isPage }: { isPage?: boolean }) => (
+export const PapottBox = ({
+  isPage,
+  openURL,
+}: Pick<PageProps, 'openURL'> & {
+  isPage?: boolean
+}) => (
   <>
     <Box noBorder={isPage}>
       <Article>
@@ -45,7 +52,7 @@ export const PapottBox = ({ isPage }: { isPage?: boolean }) => (
             If you have 5 minutes, feel free to download the app{' '}
             <CustomLink
               onPress={() =>
-                alert(
+                openURL(
                   'https://play.google.com/store/apps/details?id=com.vitmaxmobileapp',
                 )
               }
@@ -81,17 +88,18 @@ export const PapottBox = ({ isPage }: { isPage?: boolean }) => (
   </>
 )
 
-const PapottPage = ({
-  navigateTo,
-  currentRoute,
-  navigationInteractor: { openURL },
-  location: { pathname },
-}: AppContextType & PageRendererProps) => (
-  <Layout {...{ navigateTo, currentRoute, openURL, pathname }} title="papott">
+const PapottPage = ({ openURL }: PageProps) => (
+  <>
     <HtmlHeader />
-    <PapottBox isPage />
+    <PapottBox isPage {...{ openURL }} />
     <CallToAction onPress={() => openURL('mailto:xcapetir+papott@gmail.com')} />
-  </Layout>
+  </>
 )
 
-export default withContext(PapottPage)
+export default compose<PageProps, any>(
+  withContext,
+  withLayout({
+    title: 'Papott',
+    description: 'Development of a mobile application in 9 days',
+  }),
+)(PapottPage)

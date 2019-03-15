@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>http://xaviercarpentier.com/</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://xaviercarpentier.com/react-native-mobile-developer</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://xaviercarpentier.com/mobile-development-projects</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://xaviercarpentier.com/mobile-development-projects/sneat</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://xaviercarpentier.com/mobile-development-projects/papott</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://xaviercarpentier.com/mobile-development-projects/docdok</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://xaviercarpentier.com/mobile-development-projects/opensource</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://xaviercarpentier.com/expertise</loc>
+  <changefreq>monthly</changefreq>
+</url>
+</urlset>

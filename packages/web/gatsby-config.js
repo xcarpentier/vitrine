@@ -20,6 +20,12 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-52126539-1',
+      },
+    },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-native-web`,
   ],

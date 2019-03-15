@@ -6,7 +6,6 @@ import {
   ArticleContent,
   ArticleMediumLayer,
   ArticleSmallLayer,
-  ArticleTitle,
   ArticleXSLayer,
 } from '../components/common/ArticleContent'
 import { CallToAction } from '../components/common/CallToAction'
@@ -40,6 +39,8 @@ import {
   withLayout,
   PageProps,
 } from '../components/higherOrderComponent/withLayout'
+import { OpenSourceBox } from '../components/shared/OpenSourceBox'
+import { GalleryBox } from '../components/shared/GalleryBox'
 
 const IndexPage = ({ navigateTo, openURL }: PageProps) => (
   <>
@@ -62,8 +63,8 @@ const IndexPage = ({ navigateTo, openURL }: PageProps) => (
       <BoxContent>
         Making the most of Facebook technology (
         <CustomLink
-          onPress={() => navigateTo('reactnative')}
-          href="/reactnative"
+          onPress={() => navigateTo('react-native-mobile-developer')}
+          href="/react-native-mobile-developer"
         >
           React Native
         </CustomLink>
@@ -72,27 +73,7 @@ const IndexPage = ({ navigateTo, openURL }: PageProps) => (
       </BoxContent>
       <ProjectGrid {...{ navigateTo }} />
     </Box>
-    <Box>
-      <Article>
-        <ArticleMediumLayer>
-          <ArticleTitle>
-            My work is used by over{'\n'}2,200 developers worldwide
-          </ArticleTitle>
-          <ArticleContent>
-            I take part in improving React Native technology and am involved in
-            the all community.
-          </ArticleContent>
-          <CustomLink>Find out more</CustomLink>
-        </ArticleMediumLayer>
-        <ArticleSmallLayer>
-          <Image
-            style={{ flex: 1, width: '100%' }}
-            resizeMode="contain"
-            source={require('../images/choix-pays.jpg')}
-          />
-        </ArticleSmallLayer>
-      </Article>
-    </Box>
+    <OpenSourceBox {...{ navigateTo }} />
     <Box>
       <BoxTitle>
         5 steps to increase your application's chances of success and launch it
@@ -221,11 +202,15 @@ const IndexPage = ({ navigateTo, openURL }: PageProps) => (
         </ArticleXSLayer>
       </Article>
     </Box>
+    <GalleryBox {...{ openURL }} />
     <CallToAction onPress={() => openURL('mailto:xcapetir+cta@gmail.com')} />
   </>
 )
 
 export default compose<PageProps, any>(
   withContext,
-  withLayout({ title: 'Xavier Carpentier' }),
+  withLayout({
+    title: 'Xavier Carpentier',
+    description: 'Need to quickly develop a high-end mobile app?',
+  }),
 )(IndexPage)

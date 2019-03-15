@@ -10,14 +10,20 @@ import {
 } from '../../components/common/ArticleContent'
 import { CustomLink } from '../../components/common/customs/CustomText'
 import Player from 'rngallery-player'
-import { Layout } from '../../components/layout'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
-import { AppContextType } from '@vitrine/common/src/configuration/context'
 import { TestimonyAuthor } from '../../components/common/Testimony'
 import { CallToAction } from '../../components/common/CallToAction'
-import { PageRendererProps } from 'gatsby'
 
-export const DocdokBox = ({ isPage }: { isPage?: boolean }) => (
+import { compose } from 'recompose'
+import {
+  PageProps,
+  withLayout,
+} from '../../components/higherOrderComponent/withLayout'
+
+export const DocdokBox = ({
+  isPage,
+  openURL,
+}: Pick<PageProps, 'openURL'> & { isPage?: boolean }) => (
   <>
     <Box noBorder={isPage}>
       <Article>
@@ -41,7 +47,7 @@ export const DocdokBox = ({ isPage }: { isPage?: boolean }) => (
             See app{' '}
             <CustomLink
               onPress={() =>
-                alert('https://itunes.apple.com/de/app/id1294250987?l=de')
+                openURL('https://itunes.apple.com/de/app/id1294250987?l=de')
               }
             >
               iOS
@@ -49,8 +55,8 @@ export const DocdokBox = ({ isPage }: { isPage?: boolean }) => (
             or{' '}
             <CustomLink
               onPress={() =>
-                alert(
-                  'https://play.google.com/store/apps/details?id=ch.emedicus.docdok.health',
+                openURL(
+                  'https://play.google.com/store/apps/details?id=ch.health.docdok',
                 )
               }
             >
@@ -83,16 +89,17 @@ export const DocdokBox = ({ isPage }: { isPage?: boolean }) => (
   </>
 )
 
-const DocdokPage = ({
-  navigateTo,
-  currentRoute,
-  navigationInteractor: { openURL },
-  location: { pathname },
-}: AppContextType & PageRendererProps) => (
-  <Layout {...{ navigateTo, currentRoute, openURL, pathname }} title="sneat">
-    <DocdokBox isPage />
+const DocdokPage = ({ openURL }: PageProps) => (
+  <>
+    <DocdokBox isPage {...{ openURL }} />
     <CallToAction onPress={() => openURL('mailto:xcapetir@gmail.com')} />
-  </Layout>
+  </>
 )
 
-export default withContext(DocdokPage)
+export default compose<PageProps, any>(
+  withContext,
+  withLayout({
+    title: 'docdok.health',
+    description: 'A platform for communication between doctors and patients.',
+  }),
+)(DocdokPage)

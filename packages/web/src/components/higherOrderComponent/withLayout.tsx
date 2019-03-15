@@ -2,10 +2,9 @@ import React from 'react'
 import { PageRendererProps } from 'gatsby'
 import { AppContextType } from '@vitrine/common/src/configuration/context'
 import { Layout } from '../layout'
+import { HtmlHeaderProps } from '../HtmlHeader'
 
-interface ExtraProps {
-  title?: string
-}
+type ExtraProps = HtmlHeaderProps
 
 export type LayoutPageProps = AppContextType & PageRendererProps
 export interface PageProps {

@@ -5,21 +5,15 @@ import {
   MainTitle,
 } from '../components/common/customs/CustomContent'
 import { BorderBox, MainHead } from '../components/common/customs/CustomView'
-import { Layout } from '../components/layout'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
-import { AppContextType } from '@vitrine/common/src/configuration/context'
-import { PageRendererProps } from 'gatsby'
+import {
+  withLayout,
+  PageProps,
+} from '../components/higherOrderComponent/withLayout'
+import { compose } from 'recompose'
 
-const ContactPage = ({
-  navigateTo,
-  currentRoute,
-  navigationInteractor: { openURL },
-  location: { pathname },
-}: AppContextType & PageRendererProps) => (
-  <Layout
-    {...{ navigateTo, currentRoute, openURL, pathname }}
-    title="Contact me!"
-  >
+const ContactPage = () => (
+  <>
     <MainHead style={{ maxWidth: 510 }}>
       <MainTitle>Contact me!</MainTitle>
       <MainIntro>
@@ -31,7 +25,10 @@ const ContactPage = ({
     <BorderBox>
       <BoxTitle>How can you work with me?</BoxTitle>
     </BorderBox>
-  </Layout>
+  </>
 )
 
-export default withContext(ContactPage)
+export default compose<PageProps, any>(
+  withContext,
+  withLayout({ title: 'Contact me!' }),
+)(ContactPage)
