@@ -1,8 +1,10 @@
 import * as React from 'react'
-import { FlexStyle, StyleSheet, View } from 'react-native'
+import { FlexStyle, StyleSheet, View, Dimensions } from 'react-native'
 import { AccessibilityRole } from './AccessibilityRole'
 import { CustomColor } from './CustomColor'
 import { Omit } from './Omit'
+
+const { width: windowWidth } = Dimensions.get('window')
 
 type LayerType = 'constrained' | undefined
 type LayerDirection = 'row' | 'column' | undefined
@@ -149,4 +151,11 @@ export const GridItem = (props: CustomViewProps) => (
 
 export const BorderBox = (props: CustomViewProps) => (
   <Centered style={[BaseStyle.borderBox, props.style]} {...props} />
+)
+
+export const HiddenXS = (props: CustomViewProps) => (
+  <CustomView
+    style={{ display: windowWidth < 376 ? 'none' : undefined }}
+    {...props}
+  />
 )

@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     marginBottom: 14,
   },
   layer: {
-    minWidth: 200,
     padding: 5,
   },
   medium: {

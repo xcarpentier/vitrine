@@ -2,7 +2,7 @@ import * as React from 'react'
 import { StyleSheet } from 'react-native'
 import { CustomColor } from './common/customs/CustomColor'
 import { CustomText } from './common/customs/CustomText'
-import { CustomView, Main } from './common/customs/CustomView'
+import { CustomView, Main, HiddenXS } from './common/customs/CustomView'
 import { Footer, Nav } from './common/nav/Nav'
 import { FootItem, NavItem, NavItemContainer } from './common/nav/NavItem'
 import { NavLogo } from './common/nav/NavLogo'
@@ -90,11 +90,13 @@ export const Layout = ({
           onPress={() => navigateTo('expertise')}
           href="/expertise"
         />
-        <NavItem
-          title="Contact me!"
-          onPress={() => openURL('mailto:xcapetir+nav@gmail.com')}
-          asButton
-        />
+        <HiddenXS>
+          <NavItem
+            title="Contact me!"
+            onPress={() => openURL('mailto:xcapetir+nav@gmail.com')}
+            asButton
+          />
+        </HiddenXS>
       </NavItemContainer>
     </Nav>
     <CustomView center style={styles.main}>
