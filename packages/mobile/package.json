@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "/App.js",
   "scripts": {
+    "build": "echo 'no build'",
     "start": "expo start",
     "compile": "tsc --noEmit"
   },
