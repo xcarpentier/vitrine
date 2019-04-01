@@ -179,6 +179,22 @@ const OpenSourcePage = ({ openURL }: PageProps) => (
             PDF reader
           </OSPlayerText>
         </OSGridItem>
+        <OSGridItem>
+          <OSPlayer
+            gifId="FittingAromaticChimpanzee"
+            onPress={() =>
+              openURL('https://github.com/xcarpentier/rn-pdf-reader-js')
+            }
+          />
+          <OSPlayerText
+            href="https://github.com/xcarpentier/rn-verifcode"
+            onPress={() =>
+              openURL('https://github.com/xcarpentier/rn-verifcode')
+            }
+          >
+            Verification SMS code
+          </OSPlayerText>
+        </OSGridItem>
       </Grid>
     </Box>
     <GalleryBox {...{ openURL }} />
