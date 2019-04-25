@@ -28,5 +28,6 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-native-web`,
+    `gatsby-plugin-offline`,
   ],
 }
