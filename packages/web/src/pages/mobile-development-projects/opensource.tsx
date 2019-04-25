@@ -72,7 +72,7 @@ const OpenSourcePage = ({ openURL }: PageProps) => (
   <>
     <Box noBorder>
       <Article>
-        <ArticleSmallLayer>
+        <ArticleSmallLayer hiddenXS>
           <OSPlayer
             gifId="HandsomeInnocentAnura"
             onPress={() =>

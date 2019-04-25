@@ -33,7 +33,7 @@ const ReactNativePage = ({ navigateTo, openURL }: PageProps) => (
         enthusiastically train to keep up with the best tools!
       </MainIntro>
     </MainHead>
-    <Box>
+    <Box hiddenXS>
       <BoxTitle>Why do I use React Native for mobile development ?</BoxTitle>
       <BoxContent>
         I don't choose a technology because of the buzz that surrounds it, but
