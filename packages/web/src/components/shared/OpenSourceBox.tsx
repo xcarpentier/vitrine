@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box, HiddenXS } from '../common/customs/CustomView'
+import { Box } from '../common/customs/CustomView'
 import {
   Article,
   ArticleMediumLayer,

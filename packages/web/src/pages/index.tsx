@@ -10,7 +10,6 @@ import {
 } from '../components/common/ArticleContent'
 import { CallToAction } from '../components/common/CallToAction'
 import { CustomButton } from '../components/common/customs/CustomButton'
-import { CustomColor } from '../components/common/customs/CustomColor'
 import {
   BoxContent,
   BoxSubtitle,
@@ -19,13 +18,11 @@ import {
   MainIntro,
   MainTitle,
 } from '../components/common/customs/CustomContent'
-import { CustomLink, CustomText } from '../components/common/customs/CustomText'
+import { CustomLink } from '../components/common/customs/CustomText'
 import {
   Box,
-  Centered,
   CustomView,
   MainHead,
-  HiddenXS,
 } from '../components/common/customs/CustomView'
 import { StepContainer, StepItem } from '../components/common/Step'
 import {
@@ -142,59 +139,57 @@ const IndexPage = ({ navigateTo, openURL }: PageProps) => (
           </ArticleContent>
         </ArticleMediumLayer>
       </Article>
-      <HiddenXS>
-        <BoxSubtitleHr>
-          4 STARTUP FOUNDERS OR CTO GIVE THEIR OPINION
-        </BoxSubtitleHr>
-        <Article>
-          <ArticleXSLayer>
-            <TestimonyContent>
-              "Xavier is a great professional which specializes in mobile
-              development. I am looking forward to work with him in the future
-              again."
-            </TestimonyContent>
-            <TestimonyAuthor
-              name="Tomi Schütz"
-              label="CTO at docdok.health AG"
-              source={require('../images/tomi-schutz.jpg')}
-            />
-          </ArticleXSLayer>
-          <ArticleXSLayer>
-            <TestimonyContent>
-              "Xavier is willingly available and very pleasant. He always comes
-              up with bright ideas and is always on the lookout for detail and
-              cutting-edge technology."
-            </TestimonyContent>
-            <TestimonyAuthor
-              name="Alix O'byrne"
-              label="Product Line Marketing Manager at LaFourchette"
-              source={require('../images/alix.jpg')}
-            />
-          </ArticleXSLayer>
-          <ArticleXSLayer>
-            <TestimonyContent>
-              "I needed to rapidly create an application. Xavier outreached my
-              expectations by creating it in record time!"
-            </TestimonyContent>
-            <TestimonyAuthor
-              name="Maxime Vitrey"
-              label="Papott CEO"
-              source={require('../images/maxime-vitrey.jpg')}
-            />
-          </ArticleXSLayer>
-          <ArticleXSLayer>
-            <TestimonyContent>
-              "Xavier is genuinely impressive, rigorous and always on call to
-              improve the application. We are 100 % satisfied with his service."
-            </TestimonyContent>
-            <TestimonyAuthor
-              name="Benjamin Albarede"
-              label="Wine Republik CEO"
-              source={require('../images/Benjamin-ALBAREDE.png')}
-            />
-          </ArticleXSLayer>
-        </Article>
-      </HiddenXS>
+      <BoxSubtitleHr>
+        4 STARTUP FOUNDERS OR CTO GIVE THEIR OPINION
+      </BoxSubtitleHr>
+      <Article>
+        <ArticleXSLayer>
+          <TestimonyContent>
+            "Xavier is a great professional which specializes in mobile
+            development. I am looking forward to work with him in the future
+            again."
+          </TestimonyContent>
+          <TestimonyAuthor
+            name="Tomi Schütz"
+            label="CTO at docdok.health AG"
+            source={require('../images/tomi-schutz.jpg')}
+          />
+        </ArticleXSLayer>
+        <ArticleXSLayer>
+          <TestimonyContent>
+            "Xavier is willingly available and very pleasant. He always comes up
+            with bright ideas and is always on the lookout for detail and
+            cutting-edge technology."
+          </TestimonyContent>
+          <TestimonyAuthor
+            name="Alix O'byrne"
+            label="Product Line Marketing Manager at LaFourchette"
+            source={require('../images/alix.jpg')}
+          />
+        </ArticleXSLayer>
+        <ArticleXSLayer>
+          <TestimonyContent>
+            "I needed to rapidly create an application. Xavier outreached my
+            expectations by creating it in record time!"
+          </TestimonyContent>
+          <TestimonyAuthor
+            name="Maxime Vitrey"
+            label="Papott CEO"
+            source={require('../images/maxime-vitrey.jpg')}
+          />
+        </ArticleXSLayer>
+        <ArticleXSLayer>
+          <TestimonyContent>
+            "Xavier is genuinely impressive, rigorous and always on call to
+            improve the application. We are 100 % satisfied with his service."
+          </TestimonyContent>
+          <TestimonyAuthor
+            name="Benjamin Albarede"
+            label="Wine Republik CEO"
+            source={require('../images/Benjamin-ALBAREDE.png')}
+          />
+        </ArticleXSLayer>
+      </Article>
     </Box>
     <GalleryBox {...{ openURL }} />
     <CallToAction onPress={() => openURL('mailto:xcapetir+cta@gmail.com')} />
