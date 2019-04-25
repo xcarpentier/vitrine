@@ -1,8 +1,8 @@
 {
   "name": "@vitrine/mobile",
   "version": "0.0.1",
-  "main": "/App.js",
   "scripts": {
+    "prestart": "node link-workspaces.js",
     "build": "echo 'no build'",
     "start": "expo start",
     "compile": "tsc --noEmit"

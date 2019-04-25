@@ -33,7 +33,7 @@ const ExpertisePage = ({ navigateTo, openURL }: PageProps) => (
         <ArticleMediumLayer>
           <ArticleTitle>Career history</ArticleTitle>
           <ArticleSubtileSmall>2014 - Ongoing</ArticleSubtileSmall>
-          <ArticleContent style={{ minWidth: 510 }}>
+          <ArticleContent>
             Freelance full-stack mobile developer for startups
             {'\n'}
             <CustomLink
@@ -161,7 +161,7 @@ const ExpertisePage = ({ navigateTo, openURL }: PageProps) => (
             Human coders
           </ArticleContent>
           <ArticleSubtileSmall>2014</ArticleSubtileSmall>
-          <ArticleContent style={{ minWidth: 510 }}>
+          <ArticleContent>
             Certification AngularJS
             {'\n'}
             SFEIR School
