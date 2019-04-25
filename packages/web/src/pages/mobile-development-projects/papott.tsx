@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '../../components/common/customs/CustomView'
+import { Box, HiddenXS } from '../../components/common/customs/CustomView'
 import {
   Article,
   ArticleSmallLayer,
@@ -62,9 +62,11 @@ export const PapottBox = ({
             .
           </ArticleContent>
         </ArticleMediumLayer>
-        <ArticleSmallLayer>
-          <Player gifId="AlarmedCapitalBoubou" autoplay />
-        </ArticleSmallLayer>
+        <HiddenXS>
+          <ArticleSmallLayer>
+            <Player gifId="AlarmedCapitalBoubou" autoplay />
+          </ArticleSmallLayer>
+        </HiddenXS>
       </Article>
     </Box>
     <Box>

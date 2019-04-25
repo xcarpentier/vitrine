@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '../common/customs/CustomView'
+import { Box, HiddenXS } from '../common/customs/CustomView'
 import {
   Article,
   ArticleMediumLayer,
@@ -16,9 +16,21 @@ export const OpenSourceBox = ({
 }: Pick<AppContextType, 'navigateTo'>) => (
   <Box>
     <Article>
+      <ArticleSmallLayer hiddenXS>
+        <TouchableOpacity
+          style={{ flex: 1, width: '100%' }}
+          onPress={() => navigateTo('mobile-development-projects/opensource')}
+        >
+          <Image
+            style={{ flex: 1, width: '100%' }}
+            resizeMode="contain"
+            source={require('../../images/choix-pays.jpg')}
+          />
+        </TouchableOpacity>
+      </ArticleSmallLayer>
       <ArticleMediumLayer>
         <ArticleTitle>
-          My work is used by{'\n'}thousands of developers worldwide
+          My work is used by thousands of developers worldwide
         </ArticleTitle>
         <ArticleContent>
           I take part in improving React Native technology and am involved in
@@ -31,18 +43,6 @@ export const OpenSourceBox = ({
           Find out more
         </CustomLink>
       </ArticleMediumLayer>
-      <ArticleSmallLayer>
-        <TouchableOpacity
-          style={{ flex: 1, width: '100%' }}
-          onPress={() => navigateTo('mobile-development-projects/opensource')}
-        >
-          <Image
-            style={{ flex: 1, width: '100%' }}
-            resizeMode="contain"
-            source={require('../../images/choix-pays.jpg')}
-          />
-        </TouchableOpacity>
-      </ArticleSmallLayer>
     </Article>
   </Box>
 )

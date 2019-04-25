@@ -6,7 +6,8 @@
     "object-literal-sort-keys": false,
     "interface-name": false,
     "ordered-imports": false,
-    "member-access": false
+    "member-access": false,
+    "max-classes-per-file": false
   },
   "rulesDirectory": []
 }

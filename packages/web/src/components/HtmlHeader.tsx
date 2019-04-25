@@ -61,6 +61,10 @@ export function HtmlHeader({
       ]}
       meta={[
         {
+          name: `theme-color`,
+          content: `#ffffff`,
+        },
+        {
           httpEquiv: `Content-Type`,
           content: `text/html; charset=utf-8`,
         },

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '../../components/common/customs/CustomView'
+import { Box, HiddenXS } from '../../components/common/customs/CustomView'
 import {
   Article,
   ArticleSmallLayer,
@@ -29,9 +29,11 @@ export const SneatBox = ({
 }: Pick<PageProps, 'navigateTo'> & { isPage?: boolean }) => (
   <Box noBorder={isPage}>
     <Article>
-      <ArticleSmallLayer>
-        <Player gifId="AstonishingKnobbyDutchsmoushond" autoplay />
-      </ArticleSmallLayer>
+      <HiddenXS>
+        <ArticleSmallLayer>
+          <Player gifId="AstonishingKnobbyDutchsmoushond" autoplay />
+        </ArticleSmallLayer>
+      </HiddenXS>
       <ArticleMediumLayer>
         <ArticleSubtile>sneat</ArticleSubtile>
         <ArticleTitle>

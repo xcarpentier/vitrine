@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '../../components/common/customs/CustomView'
+import { Box, HiddenXS } from '../../components/common/customs/CustomView'
 import {
   Article,
   ArticleSmallLayer,
@@ -27,9 +27,11 @@ export const DocdokBox = ({
   <>
     <Box noBorder={isPage}>
       <Article>
-        <ArticleSmallLayer>
-          <Player gifId="TemptingTimelyBeauceron" autoplay />
-        </ArticleSmallLayer>
+        <HiddenXS>
+          <ArticleSmallLayer>
+            <Player gifId="TemptingTimelyBeauceron" autoplay />
+          </ArticleSmallLayer>
+        </HiddenXS>
         <ArticleMediumLayer>
           <ArticleSubtile>docdok.health</ArticleSubtile>
           <ArticleTitle>

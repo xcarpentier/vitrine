@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '../common/customs/CustomView'
+import { Box, HiddenXS } from '../common/customs/CustomView'
 import {
   Article,
   ArticleMediumLayer,
@@ -28,18 +28,20 @@ export const GalleryBox = ({ openURL }: Pick<PageProps, 'openURL'>) => (
           Find out more
         </CustomLink>
       </ArticleMediumLayer>
-      <ArticleSmallLayer>
-        <TouchableOpacity
-          onPress={() => openURL('https://reactnative.gallery/')}
-          style={{ flex: 1, width: '100%' }}
-        >
-          <Image
+      <HiddenXS>
+        <ArticleSmallLayer>
+          <TouchableOpacity
+            onPress={() => openURL('https://reactnative.gallery/')}
             style={{ flex: 1, width: '100%' }}
-            resizeMode="contain"
-            source={require('../../images/gallery.png')}
-          />
-        </TouchableOpacity>
-      </ArticleSmallLayer>
+          >
+            <Image
+              style={{ flex: 1, width: '100%' }}
+              resizeMode="contain"
+              source={require('../../images/gallery.png')}
+            />
+          </TouchableOpacity>
+        </ArticleSmallLayer>
+      </HiddenXS>
     </Article>
   </Box>
 )

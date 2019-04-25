@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FlexStyle, StyleSheet, View, Dimensions } from 'react-native'
+import { FlexStyle, StyleSheet, View, Dimensions, Platform } from 'react-native'
 import { AccessibilityRole } from './AccessibilityRole'
 import { CustomColor } from './CustomColor'
 import { Omit } from './Omit'
@@ -19,6 +19,7 @@ const BaseStyle = StyleSheet.create({
   },
   mainHead: {
     maxWidth: 650,
+    width: '100%',
     paddingBottom: 40,
   },
   mainContainer: {
@@ -27,6 +28,7 @@ const BaseStyle = StyleSheet.create({
   },
   main: {
     maxWidth: 800,
+    width: '100%',
   },
   box: {
     paddingVertical: 30,
@@ -59,6 +61,7 @@ const BaseStyle = StyleSheet.create({
 
 type CustomViewPropsBase = Omit<View['props'], 'accessibilityRole'> & {
   accessibilityRole?: AccessibilityRole
+  ref?: (c: any) => void
 }
 
 const ViewBase = (View as any) as React.ComponentType<CustomViewPropsBase>
@@ -72,37 +75,56 @@ export interface CustomViewProps extends CustomViewPropsBase {
   backgroundColor?: CustomColor
   center?: boolean
   fullWidth?: boolean
+  hiddenXS?: boolean
   children: React.ReactNode
 }
 
-export const CustomView = ({
-  type,
-  backgroundColor,
-  center,
-  direction,
-  style,
-  justify: justifyContent,
-  align: alignItems,
-  wrap: flexWrap,
-  fullWidth,
-  ...props
-}: CustomViewProps) => (
-  <ViewBase
-    style={[
-      BaseStyle.defaultStyle,
-      backgroundColor && { backgroundColor },
-      center && { justifyContent: 'center', alignItems: 'center' },
-      type === 'constrained' && BaseStyle.constrained,
-      direction && { flexDirection: direction },
-      justifyContent && { justifyContent },
-      alignItems && { alignItems },
-      flexWrap && { flexWrap },
-      fullWidth && { width: '100%' },
+export class CustomView extends React.Component<CustomViewProps> {
+  root?: any = undefined
+
+  componentDidMount() {
+    if (this.props.hiddenXS) {
+      this.root.setNativeProps({ className: 'hiddenLayout' })
+    }
+  }
+
+  setNativeProps(nativeProps: any) {
+    this.root.setNativeProps(nativeProps)
+  }
+
+  render() {
+    const {
+      type,
+      backgroundColor,
+      center,
+      direction,
       style,
-    ]}
-    {...props}
-  />
-)
+      justify: justifyContent,
+      align: alignItems,
+      wrap: flexWrap,
+      fullWidth,
+      ...otherProps
+    }: CustomViewProps = this.props
+    return (
+      <ViewBase
+        ref={(component: any) => (this.root = component)}
+        style={[
+          BaseStyle.defaultStyle,
+          backgroundColor && { backgroundColor },
+          center && { justifyContent: 'center', alignItems: 'center' },
+          type === 'constrained' && BaseStyle.constrained,
+          direction && { flexDirection: direction },
+          justifyContent && { justifyContent },
+          alignItems && { alignItems },
+          flexWrap && { flexWrap },
+          fullWidth && { width: '100%' },
+          style,
+        ]}
+        {...otherProps}
+      />
+    )
+  }
+}
 
 export const Centered = (props: CustomViewProps) => (
   <CustomView center {...props} />
@@ -137,6 +159,7 @@ export const Box = (props: CustomViewProps & { noBorder?: boolean }) => (
       props.noBorder && { borderTopWidth: 0 },
       props.style,
     ]}
+    fullWidth
     {...props}
   />
 )
@@ -153,9 +176,28 @@ export const BorderBox = (props: CustomViewProps) => (
   <Centered style={[BaseStyle.borderBox, props.style]} {...props} />
 )
 
-export const HiddenXS = (props: CustomViewProps) => (
-  <CustomView
-    style={{ display: windowWidth < 376 ? 'none' : undefined }}
-    {...props}
-  />
-)
+export class HiddenXS extends React.Component<CustomViewProps> {
+  hiddenXSRef?: any = undefined
+
+  componentDidMount() {
+    if (this.hiddenXSRef && Platform.OS === 'web') {
+      this.hiddenXSRef.setNativeProps({
+        className: 'hiddenLayout',
+      })
+    }
+  }
+
+  render() {
+    return (
+      <CustomView
+        ref={(ref: any) => (this.hiddenXSRef = ref)}
+        style={{
+          display: windowWidth < 376 ? 'none' : undefined,
+          flex: 1,
+          width: '100%',
+        }}
+        {...this.props}
+      />
+    )
+  }
+}

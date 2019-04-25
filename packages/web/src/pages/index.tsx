@@ -25,6 +25,7 @@ import {
   Centered,
   CustomView,
   MainHead,
+  HiddenXS,
 } from '../components/common/customs/CustomView'
 import { StepContainer, StepItem } from '../components/common/Step'
 import {
@@ -74,14 +75,14 @@ const IndexPage = ({ navigateTo, openURL }: PageProps) => (
       <ProjectGrid {...{ navigateTo }} />
     </Box>
     <OpenSourceBox {...{ navigateTo }} />
-    <Box>
+    <Box hiddenXS>
       <BoxTitle>
         5 steps to increase your application's chances of success and launch it
         as quickly as possible
       </BoxTitle>
       <BoxSubtitle>Inspired by lean-agile methods</BoxSubtitle>
       <Article>
-        <ArticleSmallLayer>
+        <ArticleSmallLayer hiddenXS>
           <CustomView style={{ height: 250 }} justify="flex-start">
             <Image
               style={{ flex: 1, width: '100%' }}
@@ -117,90 +118,83 @@ const IndexPage = ({ navigateTo, openURL }: PageProps) => (
         </ArticleMediumLayer>
       </Article>
     </Box>
-    <Box>
+    <Box hiddenXS>
       <BoxTitle>It is possible to combine speed and quality?</BoxTitle>
       <BoxSubtitle>
         here is the opinion of a successful startup's technical manager
       </BoxSubtitle>
 
       <Article>
-        <ArticleXSLayer>
-          <Centered>
-            <Image
-              style={{ height: 100, width: 100, borderRadius: 50 }}
-              resizeMode="contain"
-              source={require('../images/alex-hajjar.jpeg')}
-            />
-            <CustomText
-              center
-              weight="thin"
-              color={CustomColor.greyLL}
-              size="xs"
-            >
-              Alex Hajjar{'\n'}LegalStart CTO
-            </CustomText>
-          </Centered>
+        <ArticleXSLayer hiddenXS>
+          <Image
+            style={{ height: 100, width: 100, borderRadius: 50 }}
+            resizeMode="contain"
+            source={require('../images/alex-hajjar.jpeg')}
+          />
         </ArticleXSLayer>
         <ArticleMediumLayer>
           <ArticleContent>
             Xavier is able to very rapidly develop complex features and manage
             the various issues relating to a project by himself.
             {'\n'}I particularly appreciated: his timeliness, his pragmatism and
-            good ideas, his clear coding and attention to detail
+            good ideas, his clear coding and attention to detail.{'\n'}- Alex
+            Hajjar LegalStart CTO
           </ArticleContent>
         </ArticleMediumLayer>
       </Article>
-      <BoxSubtitleHr>
-        4 STARTUP FOUNDERS OR CTO GIVE THEIR OPINION
-      </BoxSubtitleHr>
-      <Article>
-        <ArticleXSLayer>
-          <TestimonyContent>
-            "Xavier is a great professional which specializes in mobile
-            development. I am looking forward to work with him in the future
-            again."
-          </TestimonyContent>
-          <TestimonyAuthor
-            name="Tomi Schütz"
-            label="CTO at docdok.health AG"
-            source={require('../images/tomi-schutz.jpg')}
-          />
-        </ArticleXSLayer>
-        <ArticleXSLayer>
-          <TestimonyContent>
-            "Xavier is willingly available and very pleasant. He always comes up
-            with bright ideas and is always on the lookout for detail and
-            cutting-edge technology."
-          </TestimonyContent>
-          <TestimonyAuthor
-            name="Alix O'byrne"
-            label="Product Line Marketing Manager at LaFourchette"
-            source={require('../images/alix.jpg')}
-          />
-        </ArticleXSLayer>
-        <ArticleXSLayer>
-          <TestimonyContent>
-            "I needed to rapidly create an application. Xavier outreached my
-            expectations by creating it in record time!"
-          </TestimonyContent>
-          <TestimonyAuthor
-            name="Maxime Vitrey"
-            label="Papott CEO"
-            source={require('../images/maxime-vitrey.jpg')}
-          />
-        </ArticleXSLayer>
-        <ArticleXSLayer>
-          <TestimonyContent>
-            "Xavier is genuinely impressive, rigorous and always on call to
-            improve the application. We are 100 % satisfied with his service."
-          </TestimonyContent>
-          <TestimonyAuthor
-            name="Benjamin Albarede"
-            label="Wine Republik CEO"
-            source={require('../images/Benjamin-ALBAREDE.png')}
-          />
-        </ArticleXSLayer>
-      </Article>
+      <HiddenXS>
+        <BoxSubtitleHr>
+          4 STARTUP FOUNDERS OR CTO GIVE THEIR OPINION
+        </BoxSubtitleHr>
+        <Article>
+          <ArticleXSLayer>
+            <TestimonyContent>
+              "Xavier is a great professional which specializes in mobile
+              development. I am looking forward to work with him in the future
+              again."
+            </TestimonyContent>
+            <TestimonyAuthor
+              name="Tomi Schütz"
+              label="CTO at docdok.health AG"
+              source={require('../images/tomi-schutz.jpg')}
+            />
+          </ArticleXSLayer>
+          <ArticleXSLayer>
+            <TestimonyContent>
+              "Xavier is willingly available and very pleasant. He always comes
+              up with bright ideas and is always on the lookout for detail and
+              cutting-edge technology."
+            </TestimonyContent>
+            <TestimonyAuthor
+              name="Alix O'byrne"
+              label="Product Line Marketing Manager at LaFourchette"
+              source={require('../images/alix.jpg')}
+            />
+          </ArticleXSLayer>
+          <ArticleXSLayer>
+            <TestimonyContent>
+              "I needed to rapidly create an application. Xavier outreached my
+              expectations by creating it in record time!"
+            </TestimonyContent>
+            <TestimonyAuthor
+              name="Maxime Vitrey"
+              label="Papott CEO"
+              source={require('../images/maxime-vitrey.jpg')}
+            />
+          </ArticleXSLayer>
+          <ArticleXSLayer>
+            <TestimonyContent>
+              "Xavier is genuinely impressive, rigorous and always on call to
+              improve the application. We are 100 % satisfied with his service."
+            </TestimonyContent>
+            <TestimonyAuthor
+              name="Benjamin Albarede"
+              label="Wine Republik CEO"
+              source={require('../images/Benjamin-ALBAREDE.png')}
+            />
+          </ArticleXSLayer>
+        </Article>
+      </HiddenXS>
     </Box>
     <GalleryBox {...{ openURL }} />
     <CallToAction onPress={() => openURL('mailto:xcapetir+cta@gmail.com')} />

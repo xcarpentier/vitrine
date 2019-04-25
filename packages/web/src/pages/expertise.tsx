@@ -23,9 +23,9 @@ const ExpertisePage = ({ navigateTo, openURL }: PageProps) => (
   <>
     <Box noBorder>
       <Article>
-        <ArticleSmallLayer>
+        <ArticleSmallLayer hiddenXS>
           <Image
-            style={{ flex: 1, width: '100%' }}
+            style={{ flex: 1, width: '90%' }}
             resizeMode="center"
             source={require('../images/docdok.jpg')}
           />
@@ -93,7 +93,7 @@ const ExpertisePage = ({ navigateTo, openURL }: PageProps) => (
     </Box>
     <Box>
       <Article>
-        <ArticleSmallLayer>
+        <ArticleSmallLayer hiddenXS>
           <Image
             style={{ flex: 1, width: '90%' }}
             resizeMode="contain"
@@ -145,7 +145,7 @@ const ExpertisePage = ({ navigateTo, openURL }: PageProps) => (
     </Box>
     <Box>
       <Article>
-        <ArticleSmallLayer>
+        <ArticleSmallLayer hiddenXS>
           <Image
             style={{ flex: 1, width: '90%' }}
             resizeMode="contain"
