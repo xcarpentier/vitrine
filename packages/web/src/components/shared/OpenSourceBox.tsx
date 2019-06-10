@@ -34,7 +34,7 @@ export const OpenSourceBox = ({
         </ArticleTitle>
         <ArticleContent>
           I take part in improving React Native technology and am involved in
-          the all community.
+          the community.
         </ArticleContent>
         <CustomLink
           onPress={() => navigateTo('mobile-development-projects/opensource')}
