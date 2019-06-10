@@ -145,8 +145,8 @@ const IndexPage = ({ navigateTo, openURL }: PageProps) => (
       <Article>
         <ArticleXSLayer>
           <TestimonyContent>
-            "Xavier is a great professional which specializes in mobile
-            development. I am looking forward to work with him in the future
+            "Xavier is a great professional who specializes in mobile
+            development. I am looking forward to working with him in the future
             again."
           </TestimonyContent>
           <TestimonyAuthor
