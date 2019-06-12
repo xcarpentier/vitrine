@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "vitrine: common",
   "scripts": {
-    "clean": "echo 'TODO: clean'",
+    "cleaning": "rm -rf node_modules",
     "compile": "tsc --noEmit",
     "build": "echo 'TODO: clean'",
     "deploy": "echo 'TODO: deploy'",

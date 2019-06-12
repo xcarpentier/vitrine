@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "vitrine: professional website",
   "scripts": {
-    "clean": "rm -rf ./dist/ && rm -rf ./public/ && rm -rf ./.cache/",
+    "cleaning": "rm -rf ./dist/ && rm -rf ./public/ && rm -rf .cache/ rm -rf node_modules",
     "compile": "tsc --noEmit",
     "build": "gatsby build",
     "deploy": "yarn clean && yarn compile && yarn build && gh-pages -d public",

@@ -9,6 +9,7 @@
       "android"
     ],
     "version": "1.0.0",
+    "entryPoint": "./packages/mobile/entrypoint.js",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -24,7 +25,6 @@
     ],
     "ios": {
       "supportsTablet": true
-    },
-    "entryPoint": "./packages/mobile/entrypoint.js"
+    }
   }
 }
