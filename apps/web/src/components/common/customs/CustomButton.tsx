@@ -25,9 +25,7 @@ const BaseStyle = StyleSheet.create({
     }),
     backgroundImage: Platform.select({
       default: undefined,
-      web: `linear-gradient(to right, ${CustomColor.primaryDD}, ${
-        CustomColor.primary
-      })`,
+      web: `linear-gradient(to right, ${CustomColor.primaryDD}, ${CustomColor.primary})`,
     }),
     borderColor: CustomColor.primaryD,
     paddingHorizontal: 12,

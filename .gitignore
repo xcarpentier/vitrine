@@ -3,6 +3,7 @@
 .jest
 .vscode
 .cache/
+.expo/
 public/
 node_modules/
 npm-debug.log

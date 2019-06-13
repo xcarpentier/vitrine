@@ -44,7 +44,6 @@
     "@types/react-native": "0.57.38",
     "@types/recompose": "0.30.5",
     "babel-plugin-react-native-web": "0.10.0",
-    "gh-pages": "2.0.1",
     "prettier": "^1.16.4",
     "tslint": "^5.13.0",
     "tslint-config-prettier": "^1.18.0",

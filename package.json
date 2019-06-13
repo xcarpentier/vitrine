@@ -12,12 +12,15 @@
   },
   "workspaces": {
     "packages": [
+      "apps/*",
       "packages/*"
     ]
   },
   "scripts": {
+    "postinstall": "expo-yarn-workspaces check-workspace-dependencies && rm -rf node_modules/babel-jest/node_modules/babel-core",
     "cleaning": "yarn workspaces run cleaning && rm -f yarn.lock && yarn cache clean && rm -rf node_modules",
     "build": "yarn workspaces run build",
+    "compile": "yarn workspaces run compile",
     "dev:mobile": "yarn workspace @vitrine/mobile compile && concurrently --kill-others \"yarn workspace @vitrine/mobile compile -w\" \"yarn workspace @vitrine/mobile start\"",
     "dev:web": "yarn workspace @vitrine/web compile && concurrently --kill-others \"yarn workspace @vitrine/web compile -w\" \"yarn workspace @vitrine/web start\"",
     "format": "yarn workspaces run format",
@@ -25,6 +28,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "babel-core": "^7.0.0-bridge.0",
     "concurrently": "^4.1.0",
     "husky": "^1.2.0",
     "lint-staged-offline": "^0.0.1",
@@ -32,7 +36,8 @@
     "tslint": "^5.13.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "expo-yarn-workspaces": "1.2.0"
   },
   "husky": {
     "hooks": {

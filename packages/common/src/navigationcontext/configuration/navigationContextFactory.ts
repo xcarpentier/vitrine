@@ -1,4 +1,4 @@
-import { NavigationInteractor } from '@vitrine/common/src/navigationcontext/domain/gateways/Navigation.interactor'
+import { NavigationInteractor } from '../domain/gateways/Navigation.interactor'
 import { InMemoryNavigationInteractor } from '../adapter/inmemory/InMemoryNavigationInteractor'
 
 export class NavigationContextFactory {

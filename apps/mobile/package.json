@@ -1,17 +1,19 @@
 {
   "name": "@vitrine/mobile",
   "version": "0.0.1",
+  "main": "__generated__/AppEntry.js",
   "scripts": {
-    "prestart": "node tools/link-workspaces.js",
-    "build": "echo 'no build'",
-    "start": "expo start",
+    "postinstall": "expo-yarn-workspaces postinstall",
+    "build": "yarn commit",
+    "start": "expo start --clear",
     "compile": "tsc --noEmit",
     "cleaning": "watchman watch-del-all && rm -rf node_modules && rm -rf $TMPDIR/react-*"
   },
   "dependencies": {
     "expo": "^32.0.0",
     "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-gifted-chat": "0.9.5"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.3.3",
@@ -19,7 +21,7 @@
     "@types/react": "16.8.8",
     "@types/react-native": "0.57.41",
     "babel-preset-expo": "^5.0.0",
-    "crna-make-symlinks-for-yarn-workspaces": "1.0.1",
+    "expo-yarn-workspaces": "1.2.0",
     "typescript": "3.3.4000"
   },
   "private": true
