@@ -10,19 +10,19 @@
     "cleaning": "watchman watch-del-all && rm -rf node_modules && rm -rf $TMPDIR/react-*"
   },
   "dependencies": {
-    "expo": "^32.0.0",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "expo": "^33.0.0",
+    "expo-constants": "5.0.1",
+    "react": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-gifted-chat": "0.9.5"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.3.3",
-    "@types/expo": "32.0.8",
     "@types/react": "16.8.8",
     "@types/react-native": "0.57.41",
     "babel-preset-expo": "^5.0.0",
     "expo-yarn-workspaces": "1.2.0",
-    "typescript": "3.3.4000"
+    "typescript": "3.5.1"
   },
   "private": true
 }

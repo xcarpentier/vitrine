@@ -1,18 +1,34 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
 import { Main } from './src/maincontext/ui'
+import { IMessage } from 'react-native-gifted-chat/lib/types'
+import { mainContextDependencies } from './src/maincontext/configuration/mainContextDependencies'
+import { ChatMessage } from './src/maincontext/domain/entities/ChatMessage'
 
-export default class App extends React.Component {
+interface State {
+  messages: ChatMessage[]
+}
+export default class App extends React.Component<any, State> {
+  state = {
+    messages: [],
+  }
+
+  mainContext = mainContextDependencies
+
+  async componentDidMount() {
+    const messages = await this.mainContext.mainInteractor.loadMessagesAsync()
+    this.setState({ messages })
+  }
+
+  onSend = (messages: ChatMessage[]) => {
+    this.setState({
+      messages: [...messages, ...this.state.messages],
+    })
+    this.mainContext.mainInteractor.sendMessageAsync(messages[0])
+  }
+
   render() {
-    return <Main />
+    const { messages } = this.state
+    const { mainContext, onSend } = this
+    return <Main {...{ messages, mainContext, onSend }} />
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
