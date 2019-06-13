@@ -19,7 +19,5 @@ interface Props {
 }
 
 export const Main = ({ messages, onSend }: Props) => (
-  <GiftedChat
-    {...{ messages, onSend, user, renderAvatar, renderAvatarOnTop: true }}
-  />
+  <GiftedChat {...{ messages, onSend, user, renderAvatar }} />
 )
