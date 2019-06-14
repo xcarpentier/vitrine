@@ -13,6 +13,10 @@
     "start": "echo 'NO START SCRIPT AVAILABLE ON COMMON'",
     "test": "echo 'TODO: test'"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "uuid": "3.3.2"
+  },
+  "devDependencies": {
+    "@types/uuid": "3.4.4"
+  }
 }

@@ -10,11 +10,12 @@
     "cleaning": "watchman watch-del-all && rm -rf node_modules && rm -rf $TMPDIR/react-*"
   },
   "dependencies": {
+    "@vitrine/common": "0.0.1",
     "expo": "^33.0.0",
     "expo-constants": "5.0.1",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
-    "react-native-gifted-chat": "0.9.5"
+    "react-native-gifted-chat": "0.9.6"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.3.3",

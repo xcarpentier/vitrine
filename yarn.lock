@@ -1170,6 +1170,13 @@
   resolved "https://registry.yarnpkg.com/@types/uuid-js/-/uuid-js-0.7.2.tgz#5b5552fcbaaf4acf026fb6dc66f7e5bd6b4be92f"
   integrity sha512-9R+mA6mMXkFVQnXEeX5fMQDR2SYND7cafJTqbeMpLhgsL7qr7MF4ZBxWpLexml3lZsBsyAmqVWbOiB0N10m15w==
 
+"@types/uuid@3.4.4":
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-3.4.4.tgz#7af69360fa65ef0decb41fd150bf4ca5c0cefdf5"
+  integrity sha512-tPIgT0GUmdJQNSHxp0X2jnpQfBSTfGxUMc/2CXBU2mnyTFVYVa2ojpoQ74w0U2yn2vw3jnC640+77lkFFpdVDw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/websql@^0.0.27":
   version "0.0.27"
   resolved "https://registry.yarnpkg.com/@types/websql/-/websql-0.0.27.tgz#621a666a7f02018e7cbb4abab956a25736c27d71"
@@ -11006,10 +11013,10 @@ react-native-gesture-handler@1.2.1:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-react-native-gifted-chat@0.9.5:
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/react-native-gifted-chat/-/react-native-gifted-chat-0.9.5.tgz#1fb5533133c293c02482e0d0025abcca7f9a4373"
-  integrity sha512-nqo/OqiYe0/K0yIxCG07aoICqaJYt+hXbgH13udMKvVGtrRYY8Am9t7IW7kyJU8RhLqE08Jf5WnypgZIXPgBuw==
+react-native-gifted-chat@0.9.6:
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/react-native-gifted-chat/-/react-native-gifted-chat-0.9.6.tgz#323cdef56f51e37f479d3adfc7ab8ad9b904ec57"
+  integrity sha512-ccrG3Lp8DeVvImMRKdbb1ix9Xw+UhuUXvV0MagKjqmSsnbU0wzmZYHi4SQhAn4ckxhRKj4+9BKqHT5iinPsKEw==
   dependencies:
     "@expo/react-native-action-sheet" "^2.0.1"
     expo-constants "~5.0.1"

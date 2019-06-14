@@ -1,14 +1,15 @@
 import { MessagingInteractor } from '../../domain/gateways/Messaging.interactor'
 import { ChatMessage } from '../../domain/entities/ChatMessage'
+import { User } from '../../domain/entities/User'
 
 const memory: { messages: ChatMessage[] } = {
   messages: [],
 }
 
 export class InMemoryMessagingInteractor implements MessagingInteractor {
-  sendMessageAsync(message: ChatMessage): Promise<any> {
+  sendMessageAsync(message: ChatMessage, to: User): Promise<any> {
     memory.messages.push(message)
-    console.log('sendMessageAsync', { message })
+    console.log('sendMessageAsync', { message, to })
     return Promise.resolve()
   }
   loadMessagesAsync(): Promise<ChatMessage[]> {

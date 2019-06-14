@@ -4,7 +4,9 @@
 .vscode
 .cache/
 .expo/
+.expo-shared/
 public/
 node_modules/
 npm-debug.log
 yarn-error.log
+apps/mobile/configuration/env.json

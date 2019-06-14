@@ -1,23 +1,39 @@
 import React from 'react'
-import { GiftedChat } from 'react-native-gifted-chat'
+import { GiftedChat, GiftedAvatar } from 'react-native-gifted-chat'
 import { ChatMessage } from '../domain/entities/ChatMessage'
 import { mainContextDependencies } from '../configuration/mainContextDependencies'
-import { User } from 'react-native-gifted-chat/lib/types'
-import Constants from 'expo-constants'
+import { UsersModal } from './components/UsersModal'
+import { User } from '../domain/entities/User'
 
-const renderAvatar = () => null
-
-const user: User = {
-  _id: Constants.installationId,
-  name: 'Xavier',
-}
+const renderAvatar = () => (
+  <GiftedAvatar user={{ _id: 0, avatar: require('../../assets/me.jpg') }} />
+)
 
 interface Props {
+  currentUser?: User
   messages: ChatMessage[]
+  currentContact?: User
+  contacts: User[]
+  isAdmin: boolean
   mainContext: typeof mainContextDependencies
   onSend(message: ChatMessage[]): void
+  selectUser(user: User): void
 }
 
-export const Main = ({ messages, onSend }: Props) => (
-  <GiftedChat {...{ messages, onSend, user, renderAvatar }} />
+export const Main = ({
+  messages,
+  onSend,
+  currentContact,
+  isAdmin,
+  contacts: data,
+  selectUser,
+  currentUser,
+}: Props) => (
+  <>
+    <UsersModal
+      visible={isAdmin && !currentContact}
+      {...{ data, selectUser }}
+    />
+    <GiftedChat {...{ messages, onSend, user: currentUser, renderAvatar }} />
+  </>
 )
