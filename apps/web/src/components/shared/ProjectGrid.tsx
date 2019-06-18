@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { AppContextType } from '@vitrine/common/src/configuration/context'
-import { Grid, GridItem } from '../common/customs/CustomView'
+import { Grid, GridItem } from '@vitrine/common/src/core/ui/customs/CustomView'
 import { ProjectItem } from '../common/ProjectItem'
 
 export const ProjectGrid = ({

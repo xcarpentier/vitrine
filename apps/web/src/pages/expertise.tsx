@@ -10,8 +10,8 @@ import {
   ArticleSubtileSmall,
 } from '../components/common/ArticleContent'
 import { Image } from 'react-native'
-import { CustomLink } from '../components/common/customs/CustomText'
-import { Box } from '../components/common/customs/CustomView'
+import { CustomLink } from '@vitrine/common/src/core/ui/customs/CustomText'
+import { Box } from '@vitrine/common/src/core/ui/customs/CustomView'
 import { compose } from 'recompose'
 import {
   PageProps,

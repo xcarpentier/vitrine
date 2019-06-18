@@ -19,7 +19,7 @@ export class InMemoryMessagingInteractor implements MessagingInteractor {
         text: 'test',
         createdAt: new Date(),
         user: {
-          _id: 2,
+          _id: 'test',
           name: 'name',
         },
       },

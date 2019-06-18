@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '../common/customs/CustomView'
+import { Box } from '@vitrine/common/src/core/ui/customs/CustomView'
 import {
   Article,
   ArticleMediumLayer,
@@ -7,7 +7,7 @@ import {
   ArticleContent,
   ArticleSmallLayer,
 } from '../common/ArticleContent'
-import { CustomLink } from '../common/customs/CustomText'
+import { CustomLink } from '@vitrine/common/src/core/ui/customs/CustomText'
 import { AppContextType } from '@vitrine/common/src/configuration/context'
 import { Image, TouchableOpacity } from 'react-native'
 

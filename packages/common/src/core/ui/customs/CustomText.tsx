@@ -4,10 +4,11 @@ import {
   Text,
   TouchableOpacity,
   GestureResponderEvent,
+  Platform,
 } from 'react-native'
-import { AccessibilityRole } from './AccessibilityRole'
-import { CustomColor } from './CustomColor'
-import { Omit } from './Omit'
+import { AccessibilityRole } from '@vitrine/common/src/core/ui/customs/AccessibilityRole'
+import { CustomColor } from '@vitrine/common/src/core/ui/customs/CustomColor'
+import { Omit } from '@vitrine/common/src/core/ui/customs/Omit'
 
 type CustomSize = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl'
 type CustomWeight = 'thin' | 'normal'
@@ -36,7 +37,12 @@ const BaseStyle = StyleSheet.create({
     fontWeight: '600',
     fontFamily: 'Open Sans',
     lineHeight: 20,
-    WebkitFontSmoothing: 'antialiased',
+    ...Platform.select({
+      default: undefined,
+      web: {
+        WebkitFontSmoothing: 'antialiased',
+      },
+    }),
   },
   link: {
     textDecorationLine: 'underline',

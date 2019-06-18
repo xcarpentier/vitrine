@@ -1,7 +1,11 @@
 import * as React from 'react'
-import { CustomView, CustomViewProps, Row } from './CustomView'
+import {
+  CustomView,
+  CustomViewProps,
+  Row,
+} from '@vitrine/common/src/core/ui/customs/CustomView'
 import { StyleSheet } from 'react-native'
-import { CustomText } from './CustomText'
+import { CustomText } from '@vitrine/common/src/core/ui/customs/CustomText'
 
 const styles = StyleSheet.create({
   container: {

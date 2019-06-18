@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { MainTitle } from '../components/common/customs/CustomContent'
-import { MainHead } from '../components/common/customs/CustomView'
+import { MainHead } from '@vitrine/common/src/core/ui/customs/CustomView'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
 import {
   withLayout,

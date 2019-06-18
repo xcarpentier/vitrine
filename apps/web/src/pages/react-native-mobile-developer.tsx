@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { CallToAction } from '../components/common/CallToAction'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
-import { MainHead, Box } from '../components/common/customs/CustomView'
+import { MainHead, Box } from '@vitrine/common/src/core/ui/customs/CustomView'
 import {
   MainTitle,
   MainIntro,

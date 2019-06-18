@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { StyleSheet } from 'react-native'
-import { CustomColor } from './CustomColor'
+import { CustomColor } from '@vitrine/common/src/core/ui/customs/CustomColor'
 import {
   CustomTextProps,
   Heading1,
   Heading2,
   Heading4,
   Paragraph,
-} from './CustomText'
-import { Centered } from './CustomView'
+} from '@vitrine/common/src/core/ui/customs/CustomText'
+import { Centered } from '@vitrine/common/src/core/ui/customs/CustomView'
 
 const styles = StyleSheet.create({
   mainTitle: {

@@ -6,6 +6,11 @@ import { notificationContextDependencies } from './src/notificationcontext/confi
 import { Notification } from './src/notificationcontext/domain/entities/Notification'
 import { AppLoading } from 'expo'
 import { User } from './src/maincontext/domain/entities/User'
+import { MessagingInteractor } from './src/maincontext/domain/gateways/Messaging.interactor'
+import { NotificationInteractor } from './src/notificationcontext/domain/gateways/Notification.interactor'
+import { UserInteractor } from './src/maincontext/domain/gateways/User.interactor'
+import { ErrorLayer } from './src/maincontext/ui/components/ErrorLayer'
+import { AppInteractor } from './src/maincontext/domain/gateways/App.interactor'
 
 interface State {
   messages: ChatMessage[]
@@ -15,6 +20,7 @@ interface State {
   contacts?: User[]
   currentContact?: User
   currentUser?: User
+  error?: string
 }
 export default class App extends React.Component<any, State> {
   state = {
@@ -25,31 +31,69 @@ export default class App extends React.Component<any, State> {
     contacts: [],
     currentContact: undefined,
     currentUser: undefined,
+    error: undefined,
   }
 
-  mainContext = mainContextDependencies
-  notificationContext = notificationContextDependencies
+  mainInteractor?: MessagingInteractor = undefined
+  userInteractor?: UserInteractor = undefined
+  notificationInteractor?: NotificationInteractor = undefined
+  appInteractor?: AppInteractor = undefined
+  unsubscribe?: () => void = undefined
 
   componentDidMount() {
-    this.bootstrap()
+    this.mainInteractor = mainContextDependencies.mainInteractor
+    this.userInteractor = mainContextDependencies.userInteractor
+    this.appInteractor = mainContextDependencies.appInteractor
+    this.notificationInteractor =
+      notificationContextDependencies.notificationInteractor
+    try {
+      this.bootstrap()
+    } catch (error) {
+      this.handleError(error)
+    }
   }
 
+  componentDidCatch(error: Error) {
+    this.handleError(error)
+  }
+
+  componentWillUnmount() {
+    if (this.unsubscribe) {
+      this.unsubscribe()
+    }
+  }
+
+  handleError = (error: Error) =>
+    this.setState({
+      error: __DEV__
+        ? error.message
+        : 'We are sorry an error occurred. Please refresh.',
+    })
+
   bootstrap = async () => {
-    const messages = await this.mainContext.mainInteractor.loadMessagesAsync()
+    await this.appInteractor!.loadFontAsync({
+      'Open Sans': require('./src/assets/fonts/OpenSans-Regular.ttf'),
+    })
+    await this.appInteractor!.loadImageAsync([
+      require('./src/assets/images/background.jpg'),
+      require('./src/assets/images/me.jpg'),
+    ])
+    const messages = await this.mainInteractor!.loadMessagesAsync()
     this.setState({ messages })
-    const acceptNotification = await this.notificationContext.notificationInteractor.subscribeAsync()
-    this.setState({ acceptNotification })
+    const token = await this.notificationInteractor!.subscribeAsync()
+    const acceptNotification = !!token
     if (acceptNotification) {
-      this.notificationContext.notificationInteractor.onNotification(
+      this.unsubscribe = this.notificationInteractor!.onNotification(
         this.handleNotification,
       )
     }
-    const isAdmin = this.mainContext.userInteractor.isAdmin()
+    const isAdmin = this.userInteractor!.isAdmin()
+    this.setState({ acceptNotification, currentUser: { _id: token!, isAdmin } })
     if (isAdmin) {
-      const contacts = await this.mainContext.userInteractor.getContactsAsync()
+      const contacts = await this.userInteractor!.getContactsAsync()
       this.setState({ contacts })
     } else {
-      const currentContact = await this.mainContext.userInteractor.getAdminAsync()
+      const currentContact = await this.userInteractor!.getAdminAsync()
       this.setState({ currentContact })
     }
     this.setState({ isReady: true, isAdmin })
@@ -68,9 +112,8 @@ export default class App extends React.Component<any, State> {
     this.setState({
       messages: [...messages, ...this.state.messages],
     })
-
     if (this.state.currentContact) {
-      this.mainContext.mainInteractor.sendMessageAsync(
+      this.mainInteractor!.sendMessageAsync(
         messages[0],
         this.state.currentContact!,
       )
@@ -86,26 +129,28 @@ export default class App extends React.Component<any, State> {
   }
 
   render() {
+    if (!this.state.isReady) {
+      return <AppLoading />
+    }
+
+    if (this.state.error) {
+      return <ErrorLayer error={this.state.error!} />
+    }
+
     const {
       messages,
-      isReady,
       currentContact,
       isAdmin,
       contacts,
       currentUser,
     } = this.state
 
-    if (!isReady) {
-      return <AppLoading />
-    }
-
-    const { mainContext, onSend, selectUser } = this
+    const { onSend, selectUser } = this
     return (
       <Main
         {...{
           selectUser,
           messages,
-          mainContext,
           onSend,
           currentContact,
           currentUser,

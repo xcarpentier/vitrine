@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '../../components/common/customs/CustomView'
+import { Box } from '@vitrine/common/src/core/ui/customs/CustomView'
 import {
   Article,
   ArticleSmallLayer,
@@ -8,7 +8,7 @@ import {
   ArticleTitle,
   ArticleContent,
 } from '../../components/common/ArticleContent'
-import { CustomLink } from '../../components/common/customs/CustomText'
+import { CustomLink } from '@vitrine/common/src/core/ui/customs/CustomText'
 import Player from 'rngallery-player'
 import { withContext } from '@vitrine/common/src/core/ui/higherOrderComponent/withContext'
 import { TestimonyAuthor } from '../../components/common/Testimony'

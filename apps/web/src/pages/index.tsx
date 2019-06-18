@@ -18,12 +18,12 @@ import {
   MainIntro,
   MainTitle,
 } from '../components/common/customs/CustomContent'
-import { CustomLink } from '../components/common/customs/CustomText'
+import { CustomLink } from '@vitrine/common/src/core/ui/customs/CustomText'
 import {
   Box,
   CustomView,
   MainHead,
-} from '../components/common/customs/CustomView'
+} from '@vitrine/common/src/core/ui/customs/CustomView'
 import { StepContainer, StepItem } from '../components/common/Step'
 import {
   TestimonyAuthor,

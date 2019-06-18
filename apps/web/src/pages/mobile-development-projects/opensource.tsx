@@ -12,7 +12,7 @@ import {
   GridItem,
   Centered,
   CustomViewProps,
-} from '../../components/common/customs/CustomView'
+} from '@vitrine/common/src/core/ui/customs/CustomView'
 import {
   Article,
   ArticleSmallLayer,
@@ -24,13 +24,13 @@ import {
 import {
   CustomLink,
   CustomTextProps,
-} from '../../components/common/customs/CustomText'
+} from '@vitrine/common/src/core/ui/customs/CustomText'
 import {
   ListContainer,
   ListItem,
 } from '../../components/common/customs/CustomList'
 import { BoxSubtitleHr } from '../../components/common/customs/CustomContent'
-import { CustomColor } from '../../components/common/customs/CustomColor'
+import { CustomColor } from '@vitrine/common/src/core/ui/customs/CustomColor'
 import { TouchableOpacity, GestureResponderEvent } from 'react-native'
 import { CallToAction } from '../../components/common/CallToAction'
 import { GalleryBox } from '../../components/shared/GalleryBox'

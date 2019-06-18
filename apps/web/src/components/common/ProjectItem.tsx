@@ -5,8 +5,8 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native'
-import { CustomColor } from './customs/CustomColor'
-import { CustomText } from './customs/CustomText'
+import { CustomColor } from '@vitrine/common/src/core/ui/customs/CustomColor'
+import { CustomText } from '@vitrine/common/src/core/ui/customs/CustomText'
 
 const styles = StyleSheet.create({
   container: { flex: 1, width: 250 },

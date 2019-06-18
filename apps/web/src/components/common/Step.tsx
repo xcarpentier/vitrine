@@ -1,8 +1,15 @@
 import * as React from 'react'
 import { StyleSheet } from 'react-native'
-import { CustomColor } from './customs/CustomColor'
-import { CustomText, Heading3, Paragraph } from './customs/CustomText'
-import { CustomView, CustomViewProps } from './customs/CustomView'
+import { CustomColor } from '@vitrine/common/src/core/ui/customs/CustomColor'
+import {
+  CustomText,
+  Heading3,
+  Paragraph,
+} from '@vitrine/common/src/core/ui/customs/CustomText'
+import {
+  CustomView,
+  CustomViewProps,
+} from '@vitrine/common/src/core/ui/customs/CustomView'
 
 const styles = StyleSheet.create({
   container: {

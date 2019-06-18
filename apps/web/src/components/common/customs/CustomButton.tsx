@@ -5,8 +5,8 @@ import {
   TouchableOpacityProps,
   Platform,
 } from 'react-native'
-import { CustomColor } from './CustomColor'
-import { CustomText } from './CustomText'
+import { CustomColor } from '@vitrine/common/src/core/ui/customs/CustomColor'
+import { CustomText } from '@vitrine/common/src/core/ui/customs/CustomText'
 
 interface CustomButtonProps extends TouchableOpacityProps {
   title: string

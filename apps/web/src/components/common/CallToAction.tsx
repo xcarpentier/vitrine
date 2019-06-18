@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { CustomButton } from './customs/CustomButton'
 import { BoxContent, BoxTitle } from './customs/CustomContent'
-import { BorderBox } from './customs/CustomView'
+import { BorderBox } from '@vitrine/common/src/core/ui/customs/CustomView'
 
 interface CallToActionProps {
   onPress(): void

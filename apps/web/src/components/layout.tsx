@@ -1,8 +1,12 @@
 import * as React from 'react'
 import { StyleSheet } from 'react-native'
-import { CustomColor } from './common/customs/CustomColor'
-import { CustomText } from './common/customs/CustomText'
-import { CustomView, Main, HiddenXS } from './common/customs/CustomView'
+import { CustomColor } from '@vitrine/common/src/core/ui/customs/CustomColor'
+import { CustomText } from '@vitrine/common/src/core/ui/customs/CustomText'
+import {
+  CustomView,
+  Main,
+  HiddenXS,
+} from '@vitrine/common/src/core/ui/customs/CustomView'
 import { Footer, Nav } from './common/nav/Nav'
 import { FootItem, NavItem, NavItemContainer } from './common/nav/NavItem'
 import { NavLogo } from './common/nav/NavLogo'

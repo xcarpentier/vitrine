@@ -10,7 +10,7 @@ import {
 } from '../components/higherOrderComponent/withLayout'
 import { compose } from 'recompose'
 import { CallToAction } from '../components/common/CallToAction'
-import { MainHead } from '../components/common/customs/CustomView'
+import { MainHead } from '@vitrine/common/src/core/ui/customs/CustomView'
 
 const NotFoundPage = ({ openURL }: PageProps) => (
   <>

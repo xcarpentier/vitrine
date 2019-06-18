@@ -1,9 +1,9 @@
 import { UserInteractor } from '../../domain/gateways/User.interactor'
 import { User } from '../../domain/entities/User'
 
-export class InMemoryInteractor implements UserInteractor {
+export class InMemoryUserInteractor implements UserInteractor {
   isAdmin(): boolean {
-    return true
+    return false
   }
   saveAdminAsync(_pushToken: string): Promise<void> {
     return Promise.resolve()
