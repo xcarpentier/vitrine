@@ -13,16 +13,36 @@ export class InMemoryMessagingInteractor implements MessagingInteractor {
     return Promise.resolve()
   }
   loadMessagesAsync(): Promise<ChatMessage[]> {
-    return Promise.resolve([
-      {
-        _id: 1,
-        text: 'test',
-        createdAt: new Date(),
-        user: {
-          _id: 'test',
-          name: 'name',
+    return Promise.resolve(
+      [
+        {
+          _id: 1,
+          text: 'test 1',
+          createdAt: new Date(),
+          user: {
+            _id: 'test',
+            name: 'name',
+          },
         },
-      },
-    ])
+        {
+          _id: 2,
+          text: 'test 2',
+          createdAt: new Date(),
+          user: {
+            _id: 'test',
+            name: 'name',
+          },
+        },
+        {
+          _id: 3,
+          text: 'test 3 *****',
+          createdAt: new Date(),
+          user: {
+            _id: 'test',
+            name: 'name',
+          },
+        },
+      ].reverse(),
+    )
   }
 }

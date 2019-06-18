@@ -4,19 +4,25 @@
     "slug": "vitrine-mobile",
     "privacy": "public",
     "sdkVersion": "33.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/images/assets/icon.png",
+    "icon": "./src/assets/images/icon.png",
     "splash": {
-      "image": "./src/images/assets/splash.png",
+      "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },

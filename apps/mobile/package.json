@@ -12,13 +12,15 @@
   "dependencies": {
     "@vitrine/common": "0.0.1",
     "expo": "^33.0.0",
+    "expo-asset": "5.0.1",
     "expo-constants": "5.0.1",
     "expo-font": "5.0.1",
     "expo-linear-gradient": "~5.0.1",
     "ramda": "0.26.1",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
-    "react-native-gifted-chat": "0.9.6"
+    "react-native-gifted-chat": "0.9.6",
+    "react-native-storage-slot": "1.0.5"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.3.3",

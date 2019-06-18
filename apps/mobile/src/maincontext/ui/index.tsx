@@ -8,6 +8,7 @@ import {
   Day,
   Time,
   Send,
+  Avatar,
 } from 'react-native-gifted-chat'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Feather } from '@expo/vector-icons'
@@ -20,9 +21,12 @@ import { ImageBackground } from 'react-native'
 import { TouchableOpacity } from 'react-native'
 import { View } from 'react-native'
 import { Platform } from 'react-native'
+import { isSameUser, isSameDay } from 'react-native-gifted-chat/lib/utils'
 
 const fontFamily = 'Open Sans'
 const AVATAR_SIZE = 38
+const DEFAULT_RADIUS = 13
+const ALTER_RADIUS = 3
 const styles = StyleSheet.create({
   avatarStyle: {
     width: AVATAR_SIZE,
@@ -30,9 +34,10 @@ const styles = StyleSheet.create({
     borderRadius: AVATAR_SIZE / 2,
   },
   bubble: {
-    borderRadius: 8,
     justifyContent: 'flex-end',
     minHeight: 20,
+    overflow: 'hidden',
+    borderRadius: DEFAULT_RADIUS,
   },
   bubbleLeft: {
     marginRight: 60,
@@ -43,6 +48,18 @@ const styles = StyleSheet.create({
   bubbleLeftWrapperStyle: {
     backgroundColor: 'transparent',
     marginRight: 0,
+  },
+  bubbleLeftNext: {
+    borderBottomLeftRadius: ALTER_RADIUS,
+  },
+  bubbleLeftPrevious: {
+    borderTopLeftRadius: ALTER_RADIUS,
+  },
+  bubbleRightNext: {
+    borderBottomRightRadius: ALTER_RADIUS,
+  },
+  bubbleRightPrevious: {
+    borderTopRightRadius: ALTER_RADIUS,
   },
   bubbleRightWrapperStyle: {
     backgroundColor: 'transparent',
@@ -64,7 +81,7 @@ const styles = StyleSheet.create({
   dayStyle: {
     fontFamily,
     color: '#fff',
-    fontSize: 15,
+    fontSize: 13,
   },
   sendContainer: {
     height: 44,
@@ -73,12 +90,51 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'transparent',
   },
+  dayContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    opacity: 0.75,
+  },
+  dayMask: {
+    minWidth: 100,
+    maxWidth: 250,
+    overflow: 'hidden',
+    borderRadius: DEFAULT_RADIUS,
+  },
 })
 
 const isLeft = (props: Bubble['props']) => props.position === 'left'
 
-const renderAvatar = (isAdmin: boolean) => (_: any) => {
-  if (_.position === 'right') {
+const stylingBubbleToNext = (props: Bubble['props']) => {
+  const { currentMessage, nextMessage } = props
+  if (
+    currentMessage &&
+    nextMessage &&
+    isSameUser(currentMessage, nextMessage) &&
+    isSameDay(currentMessage, nextMessage)
+  ) {
+    return isLeft(props) ? styles.bubbleLeftNext : styles.bubbleRightNext
+  }
+  return null
+}
+
+const stylingBubbleToPrevious = (props: Bubble['props']) => {
+  const { currentMessage, previousMessage } = props
+  if (
+    currentMessage &&
+    previousMessage &&
+    isSameUser(currentMessage, previousMessage) &&
+    isSameDay(currentMessage, previousMessage)
+  ) {
+    return isLeft(props)
+      ? styles.bubbleLeftPrevious
+      : styles.bubbleRightPrevious
+  }
+  return null
+}
+
+const renderAvatar = (isAdmin: boolean) => (props: Avatar['props']) => {
+  if (!isLeft(props)) {
     return null
   }
   if (isAdmin) {
@@ -92,30 +148,36 @@ const renderAvatar = (isAdmin: boolean) => (_: any) => {
     />
   )
 }
-const bubbleGradientRight = [CustomColor.primaryDD, CustomColor.primary]
+const defaultGradient = [CustomColor.primaryDD, CustomColor.primary]
 const bubbleGradientLeft = [CustomColor.greyLLL, CustomColor.greyLLLL]
+const bubbleGradientRight = defaultGradient
 const startLeft = [0, 1] as [number, number]
 const endLeft = [1, 0] as [number, number]
 const startRight = startLeft.reverse() as [number, number]
 const endRight = endLeft.reverse() as [number, number]
 const renderBubble = (props: Bubble['props']) => (
-  <LinearGradient
-    colors={isLeft(props) ? bubbleGradientLeft : bubbleGradientRight}
-    start={isLeft(props) ? startLeft : startRight}
-    end={isLeft(props) ? endLeft : endRight}
+  <View
     style={[
       styles.bubble,
       props.position === 'left' ? styles.bubbleLeft : styles.bubbleRight,
+      stylingBubbleToNext(props),
+      stylingBubbleToPrevious(props),
     ]}
   >
-    <Bubble
-      {...props}
-      wrapperStyle={{
-        left: styles.bubbleLeftWrapperStyle,
-        right: styles.bubbleRightWrapperStyle,
-      }}
-    />
-  </LinearGradient>
+    <LinearGradient
+      colors={isLeft(props) ? bubbleGradientLeft : bubbleGradientRight}
+      start={isLeft(props) ? startLeft : startRight}
+      end={isLeft(props) ? endLeft : endRight}
+    >
+      <Bubble
+        {...props}
+        wrapperStyle={{
+          left: styles.bubbleLeftWrapperStyle,
+          right: styles.bubbleRightWrapperStyle,
+        }}
+      />
+    </LinearGradient>
+  </View>
 )
 
 const renderComposer = (props: Composer['props']) => (
@@ -142,7 +204,13 @@ const renderSend = (props: Send['props']) => {
 }
 
 const renderDay = (props: Day['props']) => (
-  <Day {...props} textStyle={styles.dayStyle} />
+  <View style={styles.dayContainer}>
+    <View style={styles.dayMask}>
+      <LinearGradient colors={defaultGradient} start={startLeft} end={endLeft}>
+        <Day {...props} textStyle={styles.dayStyle} />
+      </LinearGradient>
+    </View>
+  </View>
 )
 
 const renderTime = (props: Time['props']) => (
@@ -195,7 +263,7 @@ export const Main = ({
           user: currentUser,
           renderAvatar: renderAvatar(isAdmin),
           showUserAvatar: false,
-          keyboardShouldPersistTaps: 'always',
+          keyboardShouldPersistTaps: 'never',
           renderBubble,
           renderComposer,
           renderMessageText,

@@ -4730,7 +4730,7 @@ expo-app-loader-provider@~5.0.1:
   resolved "https://registry.yarnpkg.com/expo-app-loader-provider/-/expo-app-loader-provider-5.0.1.tgz#56f531e189de8407bdf257d5753ccec43dd253f7"
   integrity sha512-RrbKXYmy980MdSgroY0fWPEFp4qqRGfE2oixPgN52poXJyrLbFeSmV/92IDsEOFv02jtrbbHJ8i3tiIF63czXA==
 
-expo-asset@~5.0.1:
+expo-asset@5.0.1, expo-asset@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-5.0.1.tgz#02445aeb695b8449cb7239e11fc3a8d34e6c86ce"
   integrity sha512-dDu2jgFVd5UdBVfCgiznaib7R8bF3fZ0H3cLEO8q05lXV5NwFc/ftC2BXy0+tvV5u/yEtnRvQFAQQBJVhtbvpQ==
@@ -11084,6 +11084,11 @@ react-native-screens@1.0.0-alpha.22:
   version "1.0.0-alpha.22"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.22.tgz#7a120377b52aa9bbb94d0b8541a014026be9289b"
   integrity sha512-kSyAt0AeVU6N7ZonfV6dP6iZF8B7Bce+tk3eujXhzBGsLg0VSLnU7uE9VqJF0xdQrHR91ZjGgVMieo/8df9KTA==
+
+react-native-storage-slot@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-storage-slot/-/react-native-storage-slot-1.0.5.tgz#026f2a5f40bb2c75c3a55e83ee911ecd95fecfbd"
+  integrity sha512-N2o4ZKdclm7GIl3QCxKDsqgjgP3WyjPh5HbEzVpXA/nhMdusSS2WNxtoY9SzeOtfk7OAIdExb6Vf98dxQVzJqA==
 
 react-native-svg@9.4.0:
   version "9.4.0"

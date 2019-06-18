@@ -1,8 +1,8 @@
 import { NotificationInteractor } from '../domain/gateways/Notification.interactor'
-import { InMemoryNotificationInteractor } from '../adapter/inmemory/InMemoryNotificationInteractor'
+import { ExpoNotificationInteractor } from '../adapter/real/ExpoNotificationInteractor'
 
 export class NotificationContextFactory {
   static notificationInteractor(): NotificationInteractor {
-    return new InMemoryNotificationInteractor()
+    return new ExpoNotificationInteractor()
   }
 }

@@ -8,13 +8,29 @@ import {
   StyleSheet,
 } from 'react-native'
 import { User } from '../../domain/entities/User'
+import { View } from 'react-native'
+import { CustomColor } from '@vitrine/common/src/core/ui/customs/CustomColor'
 
 const styles = StyleSheet.create({
   container: {
-    padding: 15,
+    paddingVertical: 30,
   },
   itemContainer: {
     padding: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+
+    elevation: 24,
+  },
+  sep: {
+    width: '100%',
+    height: 1,
+    backgroundColor: CustomColor.greyLLL,
   },
 })
 
@@ -34,6 +50,7 @@ const renderItem = (selectUser: Props['selectUser']) => ({
     <Text>{item._id}</Text>
   </TouchableOpacity>
 )
+const renderSeparator = () => <View style={styles.sep} />
 
 const keyExtractor = ({ _id }: User) => _id
 
@@ -45,6 +62,7 @@ export const UsersModal = ({ visible, data, selectUser }: Props) => (
         renderItem: renderItem(selectUser),
         keyExtractor,
         contentContainerStyle: styles.container,
+        ItemSeparatorComponent: renderSeparator,
       }}
     />
   </Modal>
