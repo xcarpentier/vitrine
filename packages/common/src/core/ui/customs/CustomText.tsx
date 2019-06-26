@@ -6,9 +6,9 @@ import {
   GestureResponderEvent,
   Platform,
 } from 'react-native'
-import { AccessibilityRole } from '@vitrine/common/src/core/ui/customs/AccessibilityRole'
-import { CustomColor } from '@vitrine/common/src/core/ui/customs/CustomColor'
-import { Omit } from '@vitrine/common/src/core/ui/customs/Omit'
+import { AccessibilityRole } from './AccessibilityRole'
+import { CustomColor } from './CustomColor'
+import { Omit } from './Omit'
 
 type CustomSize = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl'
 type CustomWeight = 'thin' | 'normal'

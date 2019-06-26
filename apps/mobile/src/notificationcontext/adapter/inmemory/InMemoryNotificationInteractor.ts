@@ -3,7 +3,7 @@ import {
   NotificationCallback,
   Unsubscribe,
 } from '../../domain/gateways/Notification.interactor'
-import { createId } from '@vitrine/common/src/core/domain/entities/createId.helper'
+import { createId } from '@vitrine/common/lib/core/domain/entities/createId.helper'
 
 export class InMemoryNotificationInteractor implements NotificationInteractor {
   subscribeAsync(): Promise<string | undefined> {

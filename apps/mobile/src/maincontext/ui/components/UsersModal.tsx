@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { User } from '../../domain/entities/User'
 import { View } from 'react-native'
-import { CustomColor } from '@vitrine/common/src/core/ui/customs/CustomColor'
+import { CustomColor } from '@vitrine/common/lib/core/ui/customs/CustomColor'
 
 const styles = StyleSheet.create({
   container: {

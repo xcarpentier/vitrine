@@ -3,7 +3,10 @@
     "declaration": true,
     "outDir": "./lib",
     "noEmit": false,
-    "allowJs": false
+    "allowJs": false,
+    "jsx": "react",
+    "target": "es6",
+    "module": "es6",
   },
   "extends": "../../tsconfig.json",
   "include": ["./src/**/*"]

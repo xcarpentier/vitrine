@@ -1,6 +1,6 @@
 import React from 'react'
-import { Centered } from '@vitrine/common/src/core/ui/customs/CustomView'
-import { Heading2 } from '@vitrine/common/src/core/ui/customs/CustomText'
+import { Centered } from '@vitrine/common/lib/core/ui/customs/CustomView'
+import { Heading2 } from '@vitrine/common/lib/core/ui/customs/CustomText'
 import { Button } from 'react-native'
 import { mainContextDependencies } from '../../configuration/mainContextDependencies'
 import { StyleSheet } from 'react-native'

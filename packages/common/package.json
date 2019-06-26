@@ -7,7 +7,7 @@
   "scripts": {
     "cleaning": "rm -rf node_modules",
     "compile": "tsc --noEmit",
-    "build": "tsc",
+    "build": "rm -rf lib && tsc",
     "deploy": "echo 'NO DEPLOY SCRIPT AVAILABLE ON COMMON'",
     "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'",
     "lint": "tslint -p .",
