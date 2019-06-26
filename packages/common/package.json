@@ -2,11 +2,12 @@
   "name": "@vitrine/common",
   "private": true,
   "version": "0.0.1",
+  "files": ["lib/**/*"],
   "description": "vitrine: common",
   "scripts": {
     "cleaning": "rm -rf node_modules",
     "compile": "tsc --noEmit",
-    "build": "yarn compile",
+    "build": "tsc",
     "deploy": "echo 'NO DEPLOY SCRIPT AVAILABLE ON COMMON'",
     "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'",
     "lint": "tslint -p .",
