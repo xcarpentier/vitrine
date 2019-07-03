@@ -22,6 +22,7 @@
     "build": "yarn workspaces run build",
     "compile": "yarn workspaces run compile",
     "dev:mobile": "yarn workspace @vitrine/mobile compile && concurrently --kill-others \"yarn workspace @vitrine/mobile compile -w\" \"yarn workspace @vitrine/mobile start\"",
+    "dev:rnw": "yarn workspace @vitrine/mobile compile && concurrently --kill-others \"yarn workspace @vitrine/mobile compile -w\" \"yarn workspace @vitrine/mobile start:web\"",
     "dev:web": "yarn workspace @vitrine/web compile && concurrently --kill-others \"yarn workspace @vitrine/web compile -w\" \"yarn workspace @vitrine/web start\"",
     "format": "yarn workspaces run format",
     "lint": "yarn workspaces run lint"

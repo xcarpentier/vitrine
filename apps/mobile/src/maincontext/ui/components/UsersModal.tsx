@@ -54,16 +54,17 @@ const renderSeparator = () => <View style={styles.sep} />
 
 const keyExtractor = ({ _id }: User) => _id
 
-export const UsersModal = ({ visible, data, selectUser }: Props) => (
-  <Modal {...{ visible }}>
-    <FlatList
-      {...{
-        data,
-        renderItem: renderItem(selectUser),
-        keyExtractor,
-        contentContainerStyle: styles.container,
-        ItemSeparatorComponent: renderSeparator,
-      }}
-    />
-  </Modal>
-)
+export const UsersModal = ({ visible, data, selectUser }: Props) =>
+  visible ? (
+    <Modal {...{ visible }}>
+      <FlatList
+        {...{
+          data,
+          renderItem: renderItem(selectUser),
+          keyExtractor,
+          contentContainerStyle: styles.container,
+          ItemSeparatorComponent: renderSeparator,
+        }}
+      />
+    </Modal>
+  ) : null

@@ -1,14 +1,12 @@
 import React from 'react'
 import {
   GiftedChat,
-  GiftedAvatar,
   Bubble,
   Composer,
   MessageText,
   Day,
   Time,
   Send,
-  Avatar,
 } from 'react-native-gifted-chat'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Feather } from '@expo/vector-icons'
@@ -133,21 +131,22 @@ const stylingBubbleToPrevious = (props: Bubble['props']) => {
   return null
 }
 
-const renderAvatar = (isAdmin: boolean) => (props: Avatar['props']) => {
-  if (!isLeft(props)) {
-    return null
-  }
-  if (isAdmin) {
-    return null
-  }
+// const showAvatar = (props: Avatar['props'] & Pick<Props, 'isAdmin'>) =>
+//   isLeft(props) && !props.isAdmin
 
-  return (
-    <GiftedAvatar
-      user={{ _id: 0, avatar: require('../../assets/images/me.jpg') }}
-      avatarStyle={styles.avatarStyle}
-    />
-  )
-}
+// const renderAvatar = (isAdmin: boolean) => (props: Avatar['props']) => {
+//   if (!showAvatar({ isAdmin, ...props })) {
+//     return null
+//   }
+//   return null
+
+//   // return (
+//   //   <GiftedAvatar
+//   //     user={{ _id: 0, avatar: require('../../assets/images/me.jpg') }}
+//   //     avatarStyle={styles.avatarStyle}
+//   //   />
+//   // )
+// }
 const defaultGradient = [CustomColor.primaryDD, CustomColor.primary]
 const bubbleGradientLeft = [CustomColor.greyLLL, CustomColor.greyLLLL]
 const bubbleGradientRight = defaultGradient
@@ -248,20 +247,15 @@ export const Main = ({
   currentUser,
 }: Props) => (
   <>
-    <UsersModal
-      visible={isAdmin && !currentContact}
-      {...{ data, selectUser }}
-    />
     <ImageBackground
       source={require('../../assets/images/background.jpg')}
-      style={{ width: '100%', height: '100%' }}
+      style={{ flex: 1, justifyContent: 'flex-start' }}
     >
       <GiftedChat
         {...{
           messages,
           onSend,
           user: currentUser,
-          renderAvatar: renderAvatar(isAdmin),
           showUserAvatar: false,
           keyboardShouldPersistTaps: 'never',
           renderBubble,
@@ -270,8 +264,13 @@ export const Main = ({
           renderDay,
           renderTime,
           renderSend,
+          inverted: false,
         }}
       />
     </ImageBackground>
+    <UsersModal
+      visible={isAdmin && !currentContact}
+      {...{ data, selectUser }}
+    />
   </>
 )

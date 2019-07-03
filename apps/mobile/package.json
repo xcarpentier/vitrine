@@ -5,7 +5,8 @@
   "scripts": {
     "postinstall": "expo-yarn-workspaces postinstall",
     "build": "yarn compile",
-    "start": "expo start --clear",
+    "start": "expo start",
+    "start:web": "expo start -w",
     "compile": "tsc --noEmit",
     "cleaning": "watchman watch-del-all && rm -rf node_modules && rm -rf $TMPDIR/react-*",
     "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'"
@@ -20,8 +21,10 @@
     "ramda": "0.26.1",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
-    "react-native-gifted-chat": "0.10.0-beta.web.0",
-    "react-native-storage-slot": "1.0.5"
+    "react-native-gifted-chat": "0.10.0-beta.web.7",
+    "react-native-storage-slot": "1.0.5",
+    "react-dom": "16.8.6",
+    "react-native-web": "^0.11.1"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.3.3",

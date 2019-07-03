@@ -88,7 +88,10 @@ export default class App extends React.Component<any, State> {
       )
     }
     const isAdmin = this.userInteractor!.isAdmin()
-    this.setState({ acceptNotification, currentUser: { _id: token!, isAdmin } })
+    this.setState({
+      acceptNotification,
+      currentUser: { _id: token!, isAdmin },
+    })
     if (isAdmin) {
       const contacts = await this.userInteractor!.getContactsAsync()
       this.setState({ contacts })
@@ -102,15 +105,15 @@ export default class App extends React.Component<any, State> {
   handleNotification = ({ text, id: _id, pushToken }: Notification) => {
     this.setState({
       messages: [
-        { text, _id, createdAt: new Date(), user: { _id: pushToken } },
         ...this.state.messages,
+        { text, _id, createdAt: new Date(), user: { _id: pushToken } },
       ],
     })
   }
 
   onSend = (messages: ChatMessage[]) => {
     this.setState({
-      messages: [...messages, ...this.state.messages],
+      messages: [...this.state.messages, ...messages],
     })
     if (this.state.currentContact) {
       this.mainInteractor!.sendMessageAsync(
