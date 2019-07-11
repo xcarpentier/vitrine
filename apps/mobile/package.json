@@ -19,7 +19,7 @@
     "expo-font": "5.0.1",
     "expo-linear-gradient": "~5.0.1",
     "ramda": "0.26.1",
-    "react": "16.8.3",
+    "react": "16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-gifted-chat": "0.10.0-beta.web.7",
     "react-native-storage-slot": "1.0.5",
