@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 30,
     borderBottomWidth: 1,
-    borderBottomColor: CustomColor.greyLLL,
+    borderBottomColor: CustomColor.greyLLLL,
   },
   boxSubtitleHr: {
     padding: 10,

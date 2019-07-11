@@ -13,7 +13,7 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "apps/*"
+      "apps/web"
     ]
   },
   "scripts": {
@@ -28,6 +28,7 @@
     "lint": "yarn workspaces run lint"
   },
   "dependencies": {},
+
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",
     "concurrently": "^4.1.0",

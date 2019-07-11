@@ -33,7 +33,7 @@ const BaseStyle = StyleSheet.create({
   box: {
     paddingVertical: 30,
     borderTopWidth: 1,
-    borderTopColor: CustomColor.greyLLL,
+    borderTopColor: CustomColor.greyLLLL,
   },
   grid: {
     flexDirection: 'row',

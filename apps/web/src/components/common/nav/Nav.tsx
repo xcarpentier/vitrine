@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     height: 81,
     padding: 21,
     backgroundColor: CustomColor.whiteT,
-    borderBottomColor: CustomColor.greyLLL,
+    borderBottomColor: CustomColor.greyLLLL,
     borderBottomWidth: 1,
     zIndex: 4,
   },
