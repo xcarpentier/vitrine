@@ -1,0 +1,12 @@
+diff --git a/node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js b/node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js
+index 1e759a9..a49c4af 100644
+--- a/node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js
++++ b/node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js
+@@ -379,6 +379,7 @@ var _default = (0, _helperPluginUtils().declare)((api, opts) => {
+           try {
+             helper = file.addHelper("objectSpread2");
+           } catch (_unused) {
++            this.file.declarations["objectSpread2"] = null;
+             helper = file.addHelper("objectSpread");
+           }
+         }

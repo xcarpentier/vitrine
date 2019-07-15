@@ -5,7 +5,6 @@ import {
   Composer,
   MessageText,
   Day,
-  Time,
   Send,
 } from 'react-native-gifted-chat'
 import { LinearGradient } from 'expo-linear-gradient'
@@ -212,13 +211,6 @@ const renderDay = (props: Day['props']) => (
   </View>
 )
 
-const renderTime = (props: Time['props']) => (
-  <Time
-    {...props}
-    textStyle={{ left: styles.timeStyle, right: styles.timeStyle }}
-  />
-)
-
 const renderMessageText = (props: MessageText['props']) => (
   <MessageText
     {...props}
@@ -262,9 +254,9 @@ export const Main = ({
           renderComposer,
           renderMessageText,
           renderDay,
-          renderTime,
           renderSend,
           inverted: false,
+          timeTextStyle: { left: styles.timeStyle, right: styles.timeStyle },
         }}
       />
     </ImageBackground>

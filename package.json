@@ -17,7 +17,7 @@
     ]
   },
   "scripts": {
-    "postinstall": "expo-yarn-workspaces check-workspace-dependencies && rm -rf node_modules/babel-jest/node_modules/babel-core",
+    "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
     "cleaning": "yarn workspaces run cleaning && rm -f yarn.lock && yarn cache clean && rm -rf node_modules",
     "build": "yarn workspaces run build",
     "compile": "yarn workspaces run compile",
@@ -25,20 +25,23 @@
     "dev:rnw": "yarn workspace @vitrine/mobile compile && concurrently --kill-others \"yarn workspace @vitrine/mobile compile -w\" \"yarn workspace @vitrine/mobile start:web\"",
     "dev:web": "yarn workspace @vitrine/web compile && concurrently --kill-others \"yarn workspace @vitrine/web compile -w\" \"yarn workspace @vitrine/web start\"",
     "format": "yarn workspaces run format",
-    "lint": "yarn workspaces run lint"
+    "lint": "yarn workspaces run lint",
+    "patch-package": "patch-package",
+    "prepare": "yarn patch-package"
   },
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",
     "concurrently": "^4.1.0",
+    "expo-yarn-workspaces": "1.2.0",
     "husky": "^1.2.0",
     "lint-staged-offline": "^0.0.1",
+    "patch-package": "6.1.2",
     "prettier": "^1.16.4",
     "tslint": "^5.13.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.3.3333",
-    "expo-yarn-workspaces": "1.2.0"
+    "typescript": "^3.3.3333"
   },
   "husky": {
     "hooks": {

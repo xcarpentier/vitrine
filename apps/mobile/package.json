@@ -8,6 +8,8 @@
     "start": "expo start",
     "start:web": "expo start -w",
     "compile": "tsc --noEmit",
+    "patch-package": "patch-package",
+    "prepare": "yarn patch-package",
     "cleaning": "watchman watch-del-all && rm -rf node_modules && rm -rf $TMPDIR/react-*",
     "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'"
   },
@@ -19,21 +21,21 @@
     "expo-font": "5.0.1",
     "expo-linear-gradient": "~5.0.1",
     "ramda": "0.26.1",
-    "react": "16.8.6",
+    "react": "16.8.3",
+    "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
-    "react-native-gifted-chat": "0.10.0-beta.web.7",
+    "react-native-gifted-chat": "0.10.0-beta.web.9",
     "react-native-storage-slot": "1.0.5",
-    "react-dom": "16.8.6",
-    "react-native-web": "^0.11.1"
+    "react-native-web": "0.11.5"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.3.3",
+    "@babel/preset-typescript": "^7.1.0",
     "@types/ramda": "0.26.9",
     "@types/react": "16.8.8",
     "@types/react-native": "0.57.41",
-    "babel-preset-expo": "^5.0.0",
+    "babel-preset-expo": "^5.2.0",
     "expo-yarn-workspaces": "1.2.0",
-    "typescript": "3.5.1"
+    "typescript": "3.5.3"
   },
   "private": true
 }
