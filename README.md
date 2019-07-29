@@ -6,4 +6,4 @@ nb. mono repository, ie. web and mobile shared code
 - Gatsby
 - React-Native-Web
 - TypeScript
-- Expo (WIP)
+- Expo
