@@ -11,6 +11,7 @@ import { NotificationInteractor } from './src/notificationcontext/domain/gateway
 import { UserInteractor } from './src/maincontext/domain/gateways/User.interactor'
 import { ErrorLayer } from './src/maincontext/ui/components/ErrorLayer'
 import { AppInteractor } from './src/maincontext/domain/gateways/App.interactor'
+import { GiftedChat } from 'react-native-gifted-chat'
 
 interface State {
   messages: ChatMessage[]
@@ -80,20 +81,31 @@ export default class App extends React.Component<any, State> {
     ])
     const messages = await this.mainInteractor!.loadMessagesAsync()
     this.setState({ messages })
-    const token = await this.notificationInteractor!.subscribeAsync()
-    const acceptNotification = !!token
+    const pushSubscription = await this.notificationInteractor!.subscribeAsync()
+    const isAdmin = this.userInteractor!.isAdmin()
+    const currentUser = await this.userInteractor!.getOrCreateCurrentUserAsync(
+      isAdmin,
+    )
+
+    const acceptNotification = !!pushSubscription
     if (acceptNotification) {
+      this.userInteractor!.saveUserAsync({
+        ...currentUser,
+        pushSubscription,
+      })
       this.unsubscribe = this.notificationInteractor!.onNotification(
         this.handleNotification,
       )
+    } else {
+      throw new Error('Notification is required!')
     }
-    const isAdmin = this.userInteractor!.isAdmin()
+
     this.setState({
       acceptNotification,
-      currentUser: { _id: token!, isAdmin },
+      currentUser,
     })
     if (isAdmin) {
-      const contacts = await this.userInteractor!.getContactsAsync()
+      const contacts = await this.userInteractor!.getAllContactsAsync()
       this.setState({ contacts })
     } else {
       const currentContact = await this.userInteractor!.getAdminAsync()
@@ -102,25 +114,36 @@ export default class App extends React.Component<any, State> {
     this.setState({ isReady: true, isAdmin })
   }
 
-  handleNotification = ({ text, id: _id, pushToken }: Notification) => {
-    this.setState({
-      messages: [
-        ...this.state.messages,
-        { text, _id, createdAt: new Date(), user: { _id: pushToken } },
-      ],
-    })
+  handleNotification = ({ text, id: _id, userId }: Notification) => {
+    const newMsg = {
+      text,
+      _id,
+      createdAt: new Date(),
+      user: { _id: userId || 'admin' },
+    }
+
+    this.setState(
+      previousState => ({
+        messages: GiftedChat.append(previousState.messages, [newMsg], false),
+      }),
+      () => this.mainInteractor!.saveMessageAsync(newMsg),
+    )
   }
 
   onSend = (messages: ChatMessage[]) => {
-    this.setState({
-      messages: [...this.state.messages, ...messages],
-    })
-    if (this.state.currentContact) {
-      this.mainInteractor!.sendMessageAsync(
-        messages[0],
-        this.state.currentContact!,
-      )
-    }
+    this.setState(
+      previousState => ({
+        messages: GiftedChat.append(previousState.messages, messages, false),
+      }),
+      () => {
+        if (this.state.currentContact) {
+          this.mainInteractor!.sendMessageAsync(
+            messages[0],
+            this.state.currentContact!,
+          )
+        }
+      },
+    )
   }
 
   selectUser = (currentContact: User) => this.setState({ currentContact })

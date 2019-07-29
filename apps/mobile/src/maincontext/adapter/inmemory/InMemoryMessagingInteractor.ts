@@ -7,6 +7,11 @@ const memory: { messages: ChatMessage[] } = {
 }
 
 export class InMemoryMessagingInteractor implements MessagingInteractor {
+  saveMessageAsync(message: ChatMessage): Promise<any> {
+    memory.messages.push(message)
+    console.log('sendMessageAsync', { message })
+    return Promise.resolve()
+  }
   sendMessageAsync(message: ChatMessage, to: User): Promise<any> {
     memory.messages.push(message)
     console.log('sendMessageAsync', { message, to })

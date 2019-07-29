@@ -6,19 +6,24 @@ import {
   MessageText,
   Day,
   Send,
+  GiftedAvatar,
+  Avatar,
 } from 'react-native-gifted-chat'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Feather } from '@expo/vector-icons'
 import { ChatMessage } from '../domain/entities/ChatMessage'
 import { UsersModal } from './components/UsersModal'
 import { User } from '../domain/entities/User'
-import { StyleSheet } from 'react-native'
 import { CustomColor } from '@vitrine/common/lib/core/ui/customs/CustomColor'
-import { ImageBackground } from 'react-native'
-import { TouchableOpacity } from 'react-native'
-import { View } from 'react-native'
-import { Platform } from 'react-native'
+import {
+  ImageBackground,
+  TouchableOpacity,
+  View,
+  Platform,
+  StyleSheet,
+} from 'react-native'
 import { isSameUser, isSameDay } from 'react-native-gifted-chat/lib/utils'
+import { Component } from 'react'
 
 const fontFamily = 'Open Sans'
 const AVATAR_SIZE = 38
@@ -29,6 +34,7 @@ const styles = StyleSheet.create({
     width: AVATAR_SIZE,
     height: AVATAR_SIZE,
     borderRadius: AVATAR_SIZE / 2,
+    marginRight: -2,
   },
   bubble: {
     justifyContent: 'flex-end',
@@ -130,22 +136,22 @@ const stylingBubbleToPrevious = (props: Bubble['props']) => {
   return null
 }
 
-// const showAvatar = (props: Avatar['props'] & Pick<Props, 'isAdmin'>) =>
-//   isLeft(props) && !props.isAdmin
+const showAvatar = (props: Avatar['props'] & Pick<Props, 'isAdmin'>) =>
+  isLeft(props) && !props.isAdmin
 
-// const renderAvatar = (isAdmin: boolean) => (props: Avatar['props']) => {
-//   if (!showAvatar({ isAdmin, ...props })) {
-//     return null
-//   }
-//   return null
+const renderAvatar = (isAdmin: boolean) => (props: Avatar['props']) => {
+  if (!showAvatar({ isAdmin, ...props })) {
+    return null
+  }
 
-//   // return (
-//   //   <GiftedAvatar
-//   //     user={{ _id: 0, avatar: require('../../assets/images/me.jpg') }}
-//   //     avatarStyle={styles.avatarStyle}
-//   //   />
-//   // )
-// }
+  return (
+    <GiftedAvatar
+      user={{ _id: 0, avatar: require('../../assets/images/me.jpg') }}
+      avatarStyle={styles.avatarStyle}
+    />
+  )
+}
+
 const defaultGradient = [CustomColor.primaryDD, CustomColor.primary]
 const bubbleGradientLeft = [CustomColor.greyLLL, CustomColor.greyLLLL]
 const bubbleGradientRight = defaultGradient
@@ -229,40 +235,48 @@ interface Props {
   selectUser(user: User): void
 }
 
-export const Main = ({
-  messages,
-  onSend,
-  currentContact,
-  isAdmin,
-  contacts: data,
-  selectUser,
-  currentUser,
-}: Props) => (
-  <>
-    <ImageBackground
-      source={require('../../assets/images/background.jpg')}
-      style={{ flex: 1, justifyContent: 'flex-start' }}
-    >
-      <GiftedChat
-        {...{
-          messages,
-          onSend,
-          user: currentUser,
-          showUserAvatar: false,
-          keyboardShouldPersistTaps: 'never',
-          renderBubble,
-          renderComposer,
-          renderMessageText,
-          renderDay,
-          renderSend,
-          inverted: false,
-          timeTextStyle: { left: styles.timeStyle, right: styles.timeStyle },
-        }}
-      />
-    </ImageBackground>
-    <UsersModal
-      visible={isAdmin && !currentContact}
-      {...{ data, selectUser }}
-    />
-  </>
-)
+export class Main extends Component<Props> {
+  render() {
+    const {
+      messages,
+      onSend,
+      currentContact,
+      isAdmin,
+      contacts: data,
+      selectUser,
+      currentUser,
+    } = this.props
+    return (
+      <>
+        <ImageBackground
+          source={require('../../assets/images/background.jpg')}
+          style={{ flex: 1, justifyContent: 'flex-start' }}
+        >
+          <GiftedChat
+            {...{
+              messages,
+              onSend,
+              user: currentUser,
+              keyboardShouldPersistTaps: 'never',
+              renderBubble,
+              renderComposer,
+              renderMessageText,
+              renderAvatar: renderAvatar(isAdmin),
+              renderDay,
+              renderSend,
+              inverted: false,
+              timeTextStyle: {
+                left: styles.timeStyle,
+                right: styles.timeStyle,
+              },
+            }}
+          />
+        </ImageBackground>
+        <UsersModal
+          visible={isAdmin && !currentContact}
+          {...{ data, selectUser }}
+        />
+      </>
+    )
+  }
+}

@@ -1,6 +1,6 @@
 export interface Notification {
   id: string
   text: string
-  pushToken: string
+  userId?: string
   origin?: 'selected' | 'received'
 }

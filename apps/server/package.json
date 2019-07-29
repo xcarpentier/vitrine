@@ -1,0 +1,27 @@
+{
+  "name": "@vitrine/server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Xavier Carpentier <contact@xaviercarpentier.com> (https://xaviercarpentier.com/)",
+  "license": "MIT",
+  "scripts": {
+    "cleaning": "rm -rf ./lambda/ && rm -rf node_modules",
+    "compile": "tsc --noEmit",
+    "build": "rm -rf ./lambda/ && netlify-lambda build ./src",
+    "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'",
+    "lint": "tslint -p .",
+    "start": "netlify-lambda serve ./src/"
+  },
+  "dependencies": {
+    "axios": "0.19.0",
+    "expo-server-sdk": "3.3.0",
+    "web-push": "3.3.5"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "7.3.3",
+    "@types/aws-lambda": "8.10.30",
+    "@types/node": "12.6.8",
+    "@types/web-push": "3.3.0",
+    "netlify-lambda": "1.5.0"
+  }
+}
