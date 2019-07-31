@@ -201,3 +201,29 @@ export class HiddenXS extends React.Component<CustomViewProps> {
     )
   }
 }
+
+export class VisibleXS extends React.Component<CustomViewProps> {
+  visibleXSRef?: any = undefined
+
+  componentDidMount() {
+    if (this.visibleXSRef && Platform.OS === 'web') {
+      this.visibleXSRef.setNativeProps({
+        className: 'visibleLayout',
+      })
+    }
+  }
+
+  render() {
+    return (
+      <CustomView
+        ref={(ref: any) => (this.visibleXSRef = ref)}
+        style={{
+          display: windowWidth > 376 ? 'none' : undefined,
+          flex: 1,
+          width: '100%',
+        }}
+        {...this.props}
+      />
+    )
+  }
+}
