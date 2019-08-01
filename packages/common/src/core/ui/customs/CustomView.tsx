@@ -99,7 +99,7 @@ export class CustomView extends React.Component<CustomViewProps> {
     return (
       <ViewBase
         ref={(component: any) => (this.root = component)}
-        className={hiddenXS ? 'hiddenLayoutXS' : ''}
+        nativeID={hiddenXS ? 'hiddenLayoutXS' : undefined}
         style={[
           BaseStyle.defaultStyle,
           backgroundColor && { backgroundColor },
