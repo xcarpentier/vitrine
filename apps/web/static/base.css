@@ -67,4 +67,7 @@ html.wf-active > body {
         display: flex;
         width: 100%;
     }
+    h1 {
+        font-size: 28px !important;
+    }
 }
