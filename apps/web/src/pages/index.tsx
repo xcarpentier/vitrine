@@ -39,6 +39,7 @@ import {
 } from '../components/higherOrderComponent/withLayout'
 import { OpenSourceBox } from '../components/shared/OpenSourceBox'
 import { GalleryBox } from '../components/shared/GalleryBox'
+import { HiddenXS } from '@vitrine/common/lib/core/ui/customs/CustomView'
 
 const IndexPage = ({ navigateTo, openURL }: PageProps) => (
   <>
