@@ -25,6 +25,7 @@
     "dev:rnw": "yarn workspace @vitrine/mobile compile && concurrently --kill-others \"yarn workspace @vitrine/mobile compile -w\" \"yarn workspace @vitrine/mobile start:web\"",
     "dev:web": "yarn workspace @vitrine/web compile && concurrently --kill-others \"yarn workspace @vitrine/web compile -w\" \"yarn workspace @vitrine/web start\"",
     "build:web": "yarn workspace @vitrine/web build",
+    "build:common": "yarn workspace @vitrine/common build",
     "serve:web": "yarn workspace @vitrine/web serve",
     "dev:server": "yarn workspace @vitrine/server compile && yarn workspace @vitrine/server start",
     "format": "yarn workspaces run format",
