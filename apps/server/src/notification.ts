@@ -1,4 +1,4 @@
-import { Handler, Context, Callback } from 'aws-lambda'
+import { Context, Callback } from 'aws-lambda'
 import webpush from 'web-push'
 import axios from 'axios'
 

@@ -1,11 +1,25 @@
-.wf-active {
+html > body {
+    display: none;
+    visibility: hidden;
+}
+html.wf-loading > body {
+    visibility: hidden;
+    display: none;
+}
+html.wf-inactive > body {
+    visibility: hidden;
+    display: none;
+}
+html.wf-active > body {
+    visibility: visible;
+    display: block;
     margin-top: 25px;
     font-size: 21px;
     text-align: center;
-    animation: fadein 2s;
-    -moz-animation: fadein 2s; /* Firefox */
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -o-animation: fadein 2s; /* Opera */
+    animation: fadein 3s;
+    -moz-animation: fadein 3s; /* Firefox */
+    -webkit-animation: fadein 3s; /* Safari and Chrome */
+    -o-animation: fadein 3s; /* Opera */
 }
 @keyframes fadein {
     from {
@@ -39,18 +53,18 @@
         opacity: 1;
     }
 }
-.wf-loading, .wf-inactive {
-  display: none;
-}
-@media (max-width: 376px) {
-  .hiddenLayout {
+
+#visibleLayoutXS, .visibleLayoutXS {
     display: none;
-    width: 0px;
-  }
 }
-@media (min-width: 376px) {
-  .visibleLayout {
-    display: block;
-    width: 100%;
-  }
+
+@media (max-width: 376px) {
+    #hiddenLayoutXS, .hiddenLayoutXS {
+        display: none;
+        width: 0px;
+    }
+    #visibleLayoutXS, .visibleLayoutXS {
+        display: flex;
+        width: 100%;
+    }
 }

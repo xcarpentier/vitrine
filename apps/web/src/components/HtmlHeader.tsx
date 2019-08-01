@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import * as React from 'react'
 import Helmet, { HelmetProps } from 'react-helmet'
+import '../../static/base.css'
 
 export interface HtmlHeaderProps extends HelmetProps {
   description?: string
@@ -48,15 +49,6 @@ export function HtmlHeader({
           href: '//31.media.tumblr.com/avatar_ab7b0e10f1c2_128.png',
           rel: 'apple-touch-icon',
           type: 'image/png',
-        },
-        {
-          rel: 'stylesheet',
-          type: 'text/css',
-          href: '/base.css',
-        },
-        {
-          rel: `canonical`,
-          href: `https://xaviercarpentier.com/`,
         },
       ]}
       meta={[

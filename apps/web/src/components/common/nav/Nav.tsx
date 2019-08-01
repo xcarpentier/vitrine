@@ -9,11 +9,10 @@ import {
 const styles = StyleSheet.create({
   nav: {
     ...StyleSheet.absoluteFillObject,
-    // @ts-ignore
-    position: Platform.select({ web: 'fixed', default: 'absolute' }),
+    position: 'relative',
     bottom: undefined,
-    height: 81,
-    padding: 21,
+    height: 70,
+    padding: 10,
     backgroundColor: CustomColor.whiteT,
     borderBottomColor: CustomColor.greyLLLL,
     borderBottomWidth: 1,

@@ -4,8 +4,6 @@ import { AccessibilityRole } from './AccessibilityRole'
 import { CustomColor } from './CustomColor'
 import { Omit } from './Omit'
 
-const { width: windowWidth } = Dimensions.get('window')
-
 type LayerType = 'constrained' | undefined
 type LayerDirection = 'row' | 'column' | undefined
 
@@ -61,6 +59,7 @@ const BaseStyle = StyleSheet.create({
 
 type CustomViewPropsBase = Omit<View['props'], 'accessibilityRole'> & {
   accessibilityRole?: AccessibilityRole
+  className?: string
   ref?: (c: any) => void
 }
 
@@ -76,21 +75,12 @@ export interface CustomViewProps extends CustomViewPropsBase {
   center?: boolean
   fullWidth?: boolean
   hiddenXS?: boolean
+  visibleXS?: boolean
   children: React.ReactNode
 }
 
 export class CustomView extends React.Component<CustomViewProps> {
   root?: any = undefined
-
-  componentDidMount() {
-    if (this.props.hiddenXS) {
-      this.root.setNativeProps({ className: 'hiddenLayout' })
-    }
-  }
-
-  setNativeProps(nativeProps: any) {
-    this.root.setNativeProps(nativeProps)
-  }
 
   render() {
     const {
@@ -103,11 +93,13 @@ export class CustomView extends React.Component<CustomViewProps> {
       align: alignItems,
       wrap: flexWrap,
       fullWidth,
+      hiddenXS,
       ...otherProps
     }: CustomViewProps = this.props
     return (
       <ViewBase
         ref={(component: any) => (this.root = component)}
+        className={hiddenXS ? 'hiddenLayoutXS' : undefined}
         style={[
           BaseStyle.defaultStyle,
           backgroundColor && { backgroundColor },
@@ -176,54 +168,10 @@ export const BorderBox = (props: CustomViewProps) => (
   <Centered style={[BaseStyle.borderBox, props.style]} {...props} />
 )
 
-export class HiddenXS extends React.Component<CustomViewProps> {
-  hiddenXSRef?: any = undefined
+export const HiddenXS = (props: CustomViewProps) => (
+  <CustomView nativeID="hiddenLayoutXS" {...props} />
+)
 
-  componentDidMount() {
-    if (this.hiddenXSRef && Platform.OS === 'web') {
-      this.hiddenXSRef.setNativeProps({
-        className: 'hiddenLayout',
-      })
-    }
-  }
-
-  render() {
-    return (
-      <CustomView
-        ref={(ref: any) => (this.hiddenXSRef = ref)}
-        style={{
-          display: windowWidth < 376 ? 'none' : undefined,
-          flex: 1,
-          width: '100%',
-        }}
-        {...this.props}
-      />
-    )
-  }
-}
-
-export class VisibleXS extends React.Component<CustomViewProps> {
-  visibleXSRef?: any = undefined
-
-  componentDidMount() {
-    if (this.visibleXSRef && Platform.OS === 'web') {
-      this.visibleXSRef.setNativeProps({
-        className: 'visibleLayout',
-      })
-    }
-  }
-
-  render() {
-    return (
-      <CustomView
-        ref={(ref: any) => (this.visibleXSRef = ref)}
-        style={{
-          display: windowWidth > 376 ? 'none' : undefined,
-          flex: 1,
-          width: '100%',
-        }}
-        {...this.props}
-      />
-    )
-  }
-}
+export const VisibleXS = (props: CustomViewProps) => (
+  <CustomView nativeID="visibleLayoutXS" {...props} />
+)
