@@ -195,6 +195,22 @@ const OpenSourcePage = ({ openURL }: PageProps) => (
             Verification SMS code
           </OSPlayerText>
         </OSGridItem>
+        <OSGridItem>
+          <OSPlayer
+            gifId="ScarySpectacularDeermouse"
+            onPress={() =>
+              openURL('https://github.com/xcarpentier/rn-tourguide')
+            }
+          />
+          <OSPlayerText
+            href="https://github.com/xcarpentier/rn-tourguide"
+            onPress={() =>
+              openURL('https://github.com/xcarpentier/rn-tourguide')
+            }
+          >
+            Tourguide for App
+          </OSPlayerText>
+        </OSGridItem>
       </Grid>
     </Box>
     <GalleryBox {...{ openURL }} />
